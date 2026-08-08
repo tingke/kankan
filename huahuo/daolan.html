@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台</title>
+<meta name="keywords" content="花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台" />
+<meta name="description" content="花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台" />
+<link rel="icon" href="static/huofa/logo.png" />
+<link rel="stylesheet" href="static/huofa/common.css" />
+<link rel="stylesheet" href="static/huofa/swiper.min.css" />
+<link rel="stylesheet" href="static/huofa/animate.min.css" />
+<link rel="stylesheet" href="static/huofa/style.css" type="text/css" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="format-detection" content="telephone=no" />
+<script src="static/huofa/jquery-1.11.0.min.js"></script>
+<script src="static/huofa/jquery.vidbacking.js" type="text/javascript"></script>
+<script src="static/huofa/bezier.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="static/huofa/subject_pc.css" />
+    <style>
+      @keyframes cube1move1 {
+        to {
+          transform: translate3d(0, -150px, 0);
+        }
+      }
+      @keyframes cube1move2 {
+        to {
+          transform: translate3d(150px, 0, 0);
+        }
+      }
+
+      .daolan-cube1 {
+        animation-name: cube1move1, cube1move2;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        animation-play-state: paused;
+      }
+
+      @keyframes cube2move1 {
+        from {
+          transform: translate3d(50px, 0, 0);
+        }
+        to {
+          transform: translate3d(-50px, 50px, 0);
+        }
+      }
+      @keyframes cube2move2 {
+        to {
+          transform: translate3d(50px, 50px, 0);
+        }
+      }
+
+      .daolan-cube2 {
+        animation-name: cube2move1, cube2move2;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        animation-play-state: paused;
+      }
+
+      @keyframes cube3move1 {
+        to {
+          transform: translate3d(0, 150px, 0);
+        }
+      }
+      @keyframes cube3move2 {
+        to {
+          transform: translate3d(150px, 0, 0);
+        }
+      }
+
+      .daolan-cube3 {
+        animation-name: cube3move1, cube3move2;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        animation-play-state: paused;
+      }
+
+      @keyframes cube4move1 {
+        from {
+          transform: translate3d(0, 0, 0);
+        }
+        to {
+          transform: translate3d(-100px, -100px, 0);
+        }
+      }
+      @keyframes cube4move2 {
+        to {
+          transform: translate3d(-50px, -100px, 0);
+        }
+      }
+
+      .daolan-cube4 {
+        animation-name: cube4move1, cube4move2;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate-reverse;
+        animation-play-state: paused;
+      }
+
+      body.top .daolan-cube1,
+      body.top .daolan-cube2,
+      body.top .daolan-cube3,
+      body.top .daolan-cube4 {
+        animation-play-state: running;
+      }
+    </style>
+    <style>
+      .preview-section .content {
+        margin-top: 0.5rem;
+      }
+
+      .preview-section .content .daolan-images {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .preview-section .content .daolan-bg {
+        width: 38.6%;
+        height: auto;
+        position: relative;
+        top: 0;
+      }
+
+      .preview-section .content .daolan-cube1 {
+        width: 4.8%;
+        height: auto;
+        left: 14.2%;
+        top: 33.2%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-cube2 {
+        width: 2.35%;
+        height: auto;
+        left: 41.6%;
+        top: 3.6%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-cube3 {
+        width: 4.8%;
+        height: auto;
+        left: 67.1%;
+        top: 19%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-cube4 {
+        width: 3.18%;
+        height: auto;
+        left: 82.4%;
+        top: 61.5%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-float1 {
+        width: 11.8%;
+        height: auto;
+        left: 68.1%;
+        top: 75.1%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-float2 {
+        width: 26.45%;
+        height: auto;
+        left: 73.3%;
+        top: 24.5%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-float3 {
+        width: 8.48%;
+        height: auto;
+        left: 28.8%;
+        top: 8%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-float4 {
+        width: 10.42%;
+        height: auto;
+        left: 0%;
+        top: 38%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-float5 {
+        width: 19.64%;
+        height: auto;
+        left: 11.3%;
+        top: 67.5%;
+        position: absolute;
+      }
+
+      .preview-section .content .daolan-float6 {
+        width: 6.5%;
+        height: auto;
+        left: 27.4%;
+        top: 63%;
+        position: absolute;
+      }
+    </style>
+    <style>
+      .advantage-section .advantage-panel {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .advantage-section .advantage-panel .header {
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .advantage-section .content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        column-gap: 0.15rem;
+        flex-shrink: 0;
+        width: 55%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .advantage-section .img-col {
+        width: 32%;
+      }
+
+      .advantage-section img {
+        width: 100%;
+      }
+
+      @keyframes scrollForward {
+        100% {
+          transform: translateY(-50%);
+        }
+      }
+
+      @keyframes scrollBackward {
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .advantage-section .img-col:nth-child(1) {
+        transform: translateY(0);
+        animation: scrollForward 20s linear infinite;
+      }
+
+      .advantage-section .img-col:nth-child(2) {
+        transform: translateY(-50%);
+        animation: scrollBackward 20s linear infinite;
+      }
+
+      .advantage-section .img-col:nth-child(3) {
+        transform: translateY(0);
+        animation: scrollForward 20s linear infinite;
+      }
+    </style>
+    <style>
+      .platform-section img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .platform-section img:nth-child(1) {
+        position: relative;
+      }
+    </style>
+    <style>
+      .character-section .character-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .character-section .character-item .header {
+        align-items: flex-start;
+        justify-content: center;
+        width: 30%;
+        flex-shrink: 0;
+      }
+
+      .character-section .character-item .header .title {
+        font-size: 0.4rem;
+      }
+
+      .character-section .character-item .content {
+        position: relative;
+        width: 100%;
+      }
+
+      .character-section .character-item .content img {
+        width: 100%;
+      }
+
+      .character-section .character-item .content > img:first-child {
+        position: relative;
+      }
+
+      .character-section .character-item .content img:not(:first-child) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .character-section .character-item.chic-item .header {
+        width: 46%;
+      }
+
+      .character-section .character-item.chic-item .content {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 54%;
+        height: 100%;
+      }
+
+      .character-section .character-item .phone-img {
+        width: 50%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .character-section .character-item .phone-img img {
+        position: relative;
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .character-section .character-item .phone-img img:not(:first-child) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 2;
+      }
+
+      @keyframes activemove {
+        7.142%,
+        14.284% {
+          background-image: url('static/huofa/daolan/intro.png');
+        }
+        21.426%,
+        28.568% {
+          background-image: url('static/huofa/daolan/intro.png');
+        }
+        35.71%,
+        42.852% {
+          background-image: url('static/huofa/daolan/intro.png');
+        }
+        49.994%,
+        57.136% {
+          background-image: url('static/huofa/daolan/intro.png');
+        }
+        64.278%,
+        71.42% {
+          background-image: url('static/huofa/daolan/intro.png');
+        }
+        78.562%,
+        85.704% {
+          background-image: url('static/huofa/daolan/intro.png');
+        }
+        92.846%,
+        100% {
+          background-image: url('static/huofa/daolan/intro.png');
+        }
+      }
+
+      .character-section .character-item .active-img {
+        position: absolute;
+        bottom: 19.75%;
+        left: 9.84%;
+        width: 82.5%;
+        height: 39.7%;
+        background-image: url('static/huofa/daolan/intro.png');
+        background-size: cover;
+        animation: activemove 14s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        z-index: 2;
+      }
+
+      @keyframes scrollmove {
+        0%,
+        7.142% {
+          transform: translateX(-2%);
+        }
+        14.284%,
+        21.426% {
+          transform: translateX(-16%);
+        }
+        28.568%,
+        35.71% {
+          transform: translateX(-30.5%);
+        }
+        42.852%,
+        49.994% {
+          transform: translateX(-45%);
+        }
+        57.136%,
+        64.278% {
+          transform: translateX(-59%);
+        }
+        71.42%,
+        78.562% {
+          transform: translateX(-73.1%);
+        }
+        85.704%,
+        92.846% {
+          transform: translateX(-87.6%);
+        }
+        100% {
+          transform: translateX(-102%);
+        }
+      }
+
+      .character-section .character-item .bottom-img {
+        position: absolute;
+        right: -14%;
+        width: 56.4%;
+        top: 32%;
+      }
+
+      .character-section .character-item .scroll-img {
+        transform: translateX(0%);
+        position: absolute;
+        width: 100vw;
+        height: 34.9%;
+        bottom: 8.25%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        animation: scrollmove 14s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        z-index: -1;
+      }
+    </style>
+    <style>
+      .detail-section .detail-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .detail-section .detail-item .header {
+        align-items: flex-start;
+        justify-content: center;
+        width: 40%;
+      }
+
+      .detail-section .detail-item .header .title {
+        font-size: 0.4rem;
+      }
+
+      .detail-section .detail-item .content {
+        position: relative;
+        width: 100%;
+      }
+
+      .detail-section .detail-item .content img {
+        width: 100%;
+      }
+
+      .detail-section .detail-item .content img:first-child {
+        position: relative;
+      }
+
+      .detail-section .detail-item .content img:not(:first-child) {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobi_navBar">
+  <div id="hamburger" class="protip">
+    <span></span>
+  </div>
+</div>
+<div class="header" id="header_inside">
+  <div class="logo">
+    <a href="index.html"><img src="static/huofa/logo.png" /></a>
+  </div>
+  <ul class="menu">
+    <li class="menuli" id="productnav"><a href="index.html#product">产品</a></li>
+    <li class="menuli" id="projectnav"><a href="index.html#project">项目</a></li>
+    <li class="menuli" id="companynav"><a href="index.html#company">简介</a></li>
+    <li class="menuli" id="newsnav"><a href="news.html">动态</a></li>
+    <li class="menuli" id="contactnav"><a href="index.html#contact">联系</a></li>
+  </ul>
+</div>
+
+    <div class="container">
+      <div class="top-header">
+        <p
+          class="title"
+          data-scroll
+          data-scroll-start="range 0 opacity 1"
+          data-scroll-end="range 1 opacity 0"
+        >
+          博物馆随身听
+        </p>
+        <p
+          class="sub-title"
+          data-scroll
+          data-scroll-start="range 0 opacity 1"
+          data-scroll-end="range 1 opacity 0"
+        >
+          小程序导览
+        </p>
+        <p
+          class="tip"
+          data-scroll
+          data-scroll-start="range 0 opacity 1"
+          data-scroll-end="range 1 opacity 0"
+        >
+          把博物馆装在口袋里，打造博物馆 “听游” 新模式
+        </p>
+      </div>
+      <div class="stage-wrapper preview-section" style="height: 300vh">
+        <div class="stage-wrapper-sticky">
+          <div class="content">
+            <div class="daolan-images">
+              <img
+                class="daolan-bg"
+                src="static/huofa/daolan/preview/daolan-bg.png"
+                alt=""
+                data-scroll
+                data-scroll-start="range 0.1 width 50 opacity 1"
+                data-scroll-end="range 0.5 width 38.6 opacity 1"
+              />
+              <img class="daolan-cube1" src="static/huofa/daolan/preview/cube1.png" alt="" />
+              <img class="daolan-cube2" src="static/huofa/daolan/preview/cube2.png" alt="" />
+              <img class="daolan-cube3" src="static/huofa/daolan/preview/cube3.png" alt="" />
+              <img class="daolan-cube4" src="static/huofa/daolan/preview/cube4.png" alt="" />
+              <img
+                class="daolan-float1"
+                src="static/huofa/daolan/preview/float1.png"
+                alt=""
+                data-scroll
+                data-scroll-start="range 0.2 opacity 0 scale 0.5 x -2 y -3.5 z 0"
+                data-scroll-end="range 0.5 opacity 1 scale 1 x 0 y 0 z 0"
+              />
+              <img
+                class="daolan-float2"
+                src="static/huofa/daolan/preview/float2.png"
+                alt=""
+                data-scroll
+                data-scroll-start="range 0.22 opacity 0 scale 0.5 x -2.8 y -0.3 z 0"
+                data-scroll-end="range 0.5 opacity 1 scale 1 x 0 y 0 z 0"
+              />
+              <img
+                class="daolan-float3"
+                src="static/huofa/daolan/preview/float3.png"
+                alt=""
+                data-scroll
+                data-scroll-start="range 0.24 opacity 0 scale 0.5 x 1.5 y 0.5 z 0"
+                data-scroll-end="range 0.5 opacity 1 scale 1 x 0 y 0 z 0"
+              />
+              <img
+                class="daolan-float4"
+                src="static/huofa/daolan/preview/float4.png"
+                alt=""
+                data-scroll
+                data-scroll-start="range 0.26 opacity 0 scale 0.5 x 4 y -0.5 z 0"
+                data-scroll-end="range 0.5 opacity 1 scale 1 x 0 y 0 z 0"
+              />
+              <img
+                class="daolan-float5"
+                src="static/huofa/daolan/preview/float5.png"
+                alt=""
+                data-scroll
+                data-scroll-start="range 0.28 opacity 0 scale 0.5 x 1.8 y -2.5 z 0"
+                data-scroll-end="range 0.5 opacity 1 scale 1 x 0 y 0 z 0"
+              />
+              <img
+                class="daolan-float6"
+                src="static/huofa/daolan/preview/float6.png"
+                alt=""
+                data-scroll
+                data-scroll-start="range 0.3 opacity 0 scale 0.5 x 1.4 y -2.2 z 0"
+                data-scroll-end="range 0.5 opacity 1 scale 1 x 0 y 0 z 0"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper intro-section" style="height: 200vh">
+        <div class="stage-wrapper-sticky">
+          <div
+            class="header"
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.4 opacity 1 x 0 y 0 z 0"
+          >
+            <p class="title">“博物馆随身听”</p>
+            <p class="title">多维一体的智慧导览小程序</p>
+          </div>
+          <div class="content">
+            <img
+              src="static/huofa/daolan/intro.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+              data-scroll-end="range 0.7 opacity 1 x 0 y 0 z 0"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper advantage-section" style="height: 200vh">
+        <div class="stage-wrapper-sticky">
+          <div class="advantage-panel">
+            <div
+              class="header"
+              data-scroll
+              data-scroll-start="range 0 opacity 0"
+              data-scroll-end="range 0.4 opacity 1"
+            >
+              <p class="title">通用/简洁/易用/国潮</p>
+              <p class="tip">设计功能聚焦界面简洁、<br />用户熟悉的交互方式。</p>
+            </div>
+            <div
+              class="content"
+              data-scroll
+              data-scroll-start="range 0 opacity 0"
+              data-scroll-end="range 0.4 opacity 1"
+            >
+              <div class="img-col">
+                <img src="static/huofa/daolan/advantage/1.png" alt="" />
+                <img src="static/huofa/daolan/advantage/1.png" alt="" />
+              </div>
+              <div class="img-col">
+                <img src="static/huofa/daolan/advantage/2.png" alt="" />
+                <img src="static/huofa/daolan/advantage/2.png" alt="" />
+              </div>
+              <div class="img-col">
+                <img src="static/huofa/daolan/advantage/3.png" alt="" />
+                <img src="static/huofa/daolan/advantage/3.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper platform-section" style="height: 200vh">
+        <div class="stage-wrapper-sticky">
+          <div
+            class="header"
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.4 opacity 1 x 0 y 0 z 0"
+          >
+            <p class="title">前后端联通的智能一体化导览小程序</p>
+          </div>
+          <div class="content">
+            <img
+              src="static/huofa/daolan/platform/1-主图.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+              data-scroll-end="range 0.6 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              src="static/huofa/daolan/platform/2-弹窗.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.5 opacity 0 x 0 y 1 z 0"
+              data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              src="static/huofa/daolan/platform/3-标签-1.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.5 opacity 0 x 0.5 y 0 z 0"
+              data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              src="static/huofa/daolan/platform/3-标签-2.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.5 opacity 0 x -0.5 y 0 z 0"
+              data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              src="static/huofa/daolan/platform/3-标签-3.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.5 opacity 0 x -0.5 y 0 z 0"
+              data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              src="static/huofa/daolan/platform/3-AI.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.5 opacity 0 x 0 y 0.5 z 0"
+              data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper character-section" style="height: 500vh">
+        <div class="stage-wrapper-sticky" id="character-container"></div>
+      </div>
+      <div class="stage-wrapper detail-section" style="height: 500vh">
+        <div class="stage-wrapper-sticky" id="detail-container"></div>
+      </div>
+      <div class="stage-wrapper gallery-section" style="height: 200vh">
+        <div class="stage-wrapper-sticky">
+          <div
+            class="header"
+            data-scroll
+            data-scroll-start="range 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 x 0 y 0 z 0"
+          >
+            <p class="title" data-scroll-reveal="enter from bottom">应用场景</p>
+          </div>
+          <div class="content">
+            <div class="gallery-wrapper">
+              <div
+                class="gallery-item"
+                data-index="0"
+                data-scroll
+                data-scroll-start="range 0.1 x 0 y 3 z 0"
+                data-scroll-end="range 0.6 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/daolan/gallery/mask.png" alt="" />
+                <div class="gallery-title">博物馆</div>
+                <div class="gallery-tip">适用于博物馆展览 、精品文物、导览管理多场景</div>
+                <img class="gallery-img" src="static/huofa/daolan/gallery/1.jpg" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="1"
+                data-scroll
+                data-scroll-start="range 0.2 x 0 y 3 z 0"
+                data-scroll-end="range 0.7 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/daolan/gallery/mask.png" alt="" />
+                <div class="gallery-title">展会</div>
+                <div class="gallery-tip">适用于短期展会、展位、展商、活动导览等</div>
+                <img class="gallery-img" src="static/huofa/daolan/gallery/2.jpg" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="2"
+                data-scroll
+                data-scroll-start="range 0.3 x 0 y 3 z 0"
+                data-scroll-end="range 0.8 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/daolan/gallery/mask.png" alt="" />
+                <div class="gallery-title">集市</div>
+                <div class="gallery-tip">室内外各类型集市、主题介绍、摊位展示</div>
+                <img class="gallery-img" src="static/huofa/daolan/gallery/3.jpg" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="3"
+                data-scroll
+                data-scroll-start="range 0.4 x 0 y 3 z 0"
+                data-scroll-end="range 0.9 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/daolan/gallery/mask.png" alt="" />
+                <div class="gallery-title">公园</div>
+                <div class="gallery-tip">文旅综合服务导览平台、配套临时活动导览服务</div>
+                <img class="gallery-img" src="static/huofa/daolan/gallery/4.jpg" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="4"
+                data-scroll
+                data-scroll-start="range 0.5 x 0 y 3 z 0"
+                data-scroll-end="range 1 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/daolan/gallery/mask.png" alt="" />
+                <div class="gallery-title">文旅·度假村</div>
+                <div class="gallery-tip">住宿、美食、商场、游玩等综合信息展示导览</div>
+                <img class="gallery-img" src="static/huofa/daolan/gallery/5.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+  北京花火时代科技有限公司 |
+  <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17033495号</a>
+</div>
+
+<script type="text/javascript" src="static/huofa/scrollReveal.js"></script>
+<script src="static/huofa/swiper.min.js"></script>
+<script src="static/huofa/swiper.animate.min.js"></script>
+<script src="static/huofa/common.js"></script>
+<script src="static/huofa/global.js"></script>
+<script type="text/javascript" src="static/huofa/jweixin-1.2.0.js"></script>
+
+    <script type="text/template" id="character1">
+      <div class="character-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">观众/文物精准定位</p>
+          <p class="tip">观众实时定位，<br/>文物讲解精准跟随，<br/>个性规划路线。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/daolan/character/1/1-地图.png" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0" />
+          <img src="static/huofa/daolan/character/1/2-文物位置.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.7 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+          <img src="static/huofa/daolan/character/1/3-标注弹窗.png" alt="" data-scroll-reveal="enter from bottom after 1s"
+            data-scroll
+            data-scroll-start="range 0.4 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="character2">
+      <div class="character-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">聚焦精品文物讲解</p>
+          <p class="tip">精品文物讲解库，<br />文物视角趣味语音讲解。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/daolan/character/1/1-地图.png" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+          <img src="static/huofa/daolan/character/1/1-地图.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.6 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+          <img src="static/huofa/daolan/character/1/1-地图.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.4 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.7 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+          <img src="static/huofa/daolan/character/1/1-地图.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.5 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="character3">
+      <div class="character-item chic-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+        >
+          <p class="title">文博国潮新风尚</p>
+          <p class="tip">国潮风格设计，<br/>贴合博物馆个性化使用场景。</p>
+        </div>
+        <div class="content"
+          data-scroll
+          data-scroll-start="range 0.5 opacity 0"
+          data-scroll-end="range 0.7 opacity 1"
+        >
+          <div class="phone-img">
+            <img  src="static/huofa/daolan/character/1/1-地图.png" alt="" />
+            <div class="active-img"></div>
+            <img src="static/huofa/daolan/character/1/1-地图.png" alt="" />
+          </div>
+        </div>
+        <img class="bottom-img" src="static/huofa/daolan/character/1/1-地图.png" alt=""
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"/>
+        <div class="scroll-img"
+          data-scroll
+          data-scroll-start="range 0.5 opacity 0"
+          data-scroll-end="range 0.7 opacity 1"
+        >
+          <img src="static/huofa/daolan/character/1/1-地图.png" alt="" />
+          <img src="static/huofa/daolan/character/1/1-地图.png" alt="" />
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="detail1">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">导览数据智慧管理</p>
+          <p class="tip">开放式管理中台，<br />支持自主上传导览地图、<br />展厅及文物信息等。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/daolan/intro.png" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+          <img src="static/huofa/daolan/intro.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="detail2">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">导览信息个性化编辑</p>
+          <p class="tip">
+            根据需求自定义<br />编辑地图、展览、文物导览方案。
+          </p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/daolan/intro.png" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0" />
+          <img src="static/huofa/daolan/intro.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.7 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+          <img src="static/huofa/daolan/intro.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.4 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"/>
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="detail3">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+        >
+          <p class="title">AI辅助导览服务</p>
+          <p class="tip">AI工具辅助信息检索，<br />讲解内容编写，<br />文本转语音。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/daolan/intro.png" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"/>
+          <img src="static/huofa/daolan/intro.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"/>
+        </div>
+      </div>
+    </script>
+    <script>
+      $(function () {
+        function handlePreviewSection() {
+          const currentScroll = $(document).scrollTop();
+          const windowHeight = $(window).height();
+          const el = $('.preview-section');
+          const height = el.height();
+          const offsetTop = el.offset().top;
+
+          if (currentScroll <= offsetTop) {
+            $('body').addClass('top');
+          } else {
+            $('body').removeClass('top');
+          }
+
+          if (currentScroll < offsetTop) {
+            scrollShow(el, 0);
+          } else if (currentScroll > offsetTop && currentScroll <= offsetTop + height) {
+            if (currentScroll > offsetTop && currentScroll <= offsetTop + height - windowHeight) {
+              // 从入屏到出屏的进度百分比
+              const percent = (currentScroll - offsetTop) / height;
+              scrollShow(el, percent);
+            }
+
+            if (
+              currentScroll > offsetTop + height - windowHeight &&
+              currentScroll < offsetTop + height
+            ) {
+              const percent = (currentScroll - (offsetTop + height - windowHeight)) / windowHeight;
+              scrollHide(el, percent);
+            }
+          }
+        }
+
+        let characterPreItem = {};
+        function handleCharacterSection() {
+          const currentScroll = $(document).scrollTop();
+          const windowHeight = $(window).height();
+          const el = $('.character-section');
+          const height = el.height();
+          const offsetTop = el.offset().top;
+
+          const q = [
+            { index: 0, start: 0, end: 1 / 6, handler: scrollShow },
+            { index: 0, start: 1 / 6, end: 2 / 6, handler: scrollHide },
+            { index: 1, start: 2 / 6, end: 3 / 6, handler: scrollShow },
+            { index: 1, start: 3 / 6, end: 4 / 6, handler: scrollHide },
+            { index: 2, start: 4 / 6, end: 5 / 6, handler: scrollShow },
+            { index: 2, start: 5 / 6, end: 6 / 6, handler: scrollHide },
+          ];
+
+          if (currentScroll > offsetTop - windowHeight && currentScroll <= offsetTop + height) {
+            // 从入屏到出屏的进度百分比
+            const percent = (currentScroll - (offsetTop - windowHeight)) / (windowHeight + height);
+            let item = {};
+            q.forEach(function (i) {
+              if (percent >= i.start && percent < i.end) {
+                item = i;
+              }
+            });
+            if (characterPreItem.index !== item.index) {
+              const template = $('#character' + (item.index + 1)).html();
+              $('#character-container').html($(template));
+              characterPreItem = item;
+            }
+            // 计算当前进度百分比
+            const p = (percent - item.start) / (item.end - item.start);
+            item.handler(el, p);
+          }
+        }
+
+        let detailPreItem = {};
+        function handleDetailSection() {
+          const currentScroll = $(document).scrollTop();
+          const windowHeight = $(window).height();
+          const el = $('.detail-section');
+          const height = el.height();
+          const offsetTop = el.offset().top;
+
+          const q = [
+            { index: 0, start: 0, end: 1 / 6, handler: scrollShow },
+            { index: 0, start: 1 / 6, end: 2 / 6, handler: scrollHide },
+            { index: 1, start: 2 / 6, end: 3 / 6, handler: scrollShow },
+            { index: 1, start: 3 / 6, end: 4 / 6, handler: scrollHide },
+            { index: 2, start: 4 / 6, end: 5 / 6, handler: scrollShow },
+            { index: 2, start: 5 / 6, end: 6 / 6, handler: scrollHide },
+          ];
+
+          if (currentScroll > offsetTop - windowHeight && currentScroll <= offsetTop + height) {
+            // 从入屏到出屏的进度百分比
+            const percent = (currentScroll - (offsetTop - windowHeight)) / (windowHeight + height);
+            let item = {};
+            q.forEach(function (i) {
+              if (percent >= i.start && percent < i.end) {
+                item = i;
+              }
+            });
+            if (detailPreItem.index !== item.index) {
+              const template = $('#detail' + (item.index + 1)).html();
+              $('#detail-container').html($(template));
+              detailPreItem = item;
+            }
+            // 计算当前进度百分比
+            const p = (percent - item.start) / (item.end - item.start);
+            item.handler(el, p);
+          }
+        }
+
+        window.hua.subject();
+
+        let scrolled = false;
+        function scrollPage() {
+          handlePreviewSection();
+          handleCharacterSection();
+          handleDetailSection();
+          handleSection('.top-header');
+          handleSection('.intro-section');
+          handleSection('.advantage-section');
+          handleSection('.platform-section');
+          handleSection('.gallery-section');
+          scrolled = false;
+        }
+        function scrollHandler() {
+          if (!scrolled) {
+            scrolled = true;
+            window.requestAnimationFrame(function () {
+              scrollPage();
+            });
+          }
+        }
+
+        scrollHandler();
+
+        $(window).resize(function () {
+          scrollHandler();
+        });
+
+        $(window).scroll(scrollHandler);
+      });
+    </script>
+  </body>
+</html>

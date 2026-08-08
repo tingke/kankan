@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日穿搭</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .outfit-card {
+      transition: all 0.3s ease;
+    }
+    .outfit-card:active {
+      transform: scale(0.98);
+    }
+    .category-btn {
+      transition: all 0.3s ease;
+    }
+    .category-btn.active {
+      background: #3b82f6;
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="h-full overflow-y-auto pb-20">
+    <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 pt-8 pb-8">
+      <div class="flex items-center justify-between mb-4">
+        <a href="weather.html" class="flex items-center gap-2 text-white/90 text-sm hover:text-white transition-colors">
+          <i class="fas fa-chevron-left"></i>
+          返回天气
+        </a>
+      </div>
+      <h1 class="text-2xl font-bold mb-2">今日穿搭</h1>
+      <p class="text-blue-100 text-sm mb-4">根据天气和场合推荐</p>
+      
+      <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-4">
+        <div class="flex items-center gap-3">
+          <i class="fas fa-cloud-sun text-yellow-300 text-2xl"></i>
+          <div>
+            <p class="font-semibold">北京市 -3° 多云</p>
+            <p class="text-sm text-blue-100">建议穿着保暖衣物</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4 -mt-4">
+      <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+        <h2 class="font-bold text-gray-800 mb-3">今日推荐</h2>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="outfit-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-3">
+            <div class="w-full h-32 bg-white rounded-lg mb-2 flex items-center justify-center shadow-sm">
+              <i class="fas fa-shirt text-blue-400 text-4xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-800">羊毛毛衣</p>
+            <p class="text-xs text-gray-500">保暖舒适</p>
+          </div>
+          
+          <div class="outfit-card bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3">
+            <div class="w-full h-32 bg-white rounded-lg mb-2 flex items-center justify-center shadow-sm">
+              <i class="fas fa-vest text-gray-400 text-4xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-800">羽绒服</p>
+            <p class="text-xs text-gray-500">防风保暖</p>
+          </div>
+          
+          <div class="outfit-card bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-3">
+            <div class="w-full h-32 bg-white rounded-lg mb-2 flex items-center justify-center shadow-sm">
+              <i class="fas fa-socks text-indigo-400 text-4xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-800">加厚牛仔裤</p>
+            <p class="text-xs text-gray-500">经典百搭</p>
+          </div>
+          
+          <div class="outfit-card bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-3">
+            <div class="w-full h-32 bg-white rounded-lg mb-2 flex items-center justify-center shadow-sm">
+              <i class="fas fa-shoe-prints text-amber-400 text-4xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-gray-800">雪地靴</p>
+            <p class="text-xs text-gray-500">防滑保暖</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+        <h2 class="font-bold text-gray-800 mb-3">穿搭分类</h2>
+        <div class="flex gap-2 overflow-x-auto pb-2">
+          <button class="category-btn active px-4 py-2 bg-gray-100 rounded-full text-sm font-medium whitespace-nowrap">
+            全部
+          </button>
+          <button class="category-btn px-4 py-2 bg-gray-100 rounded-full text-sm font-medium whitespace-nowrap">
+            上装
+          </button>
+          <button class="category-btn px-4 py-2 bg-gray-100 rounded-full text-sm font-medium whitespace-nowrap">
+            下装
+          </button>
+          <button class="category-btn px-4 py-2 bg-gray-100 rounded-full text-sm font-medium whitespace-nowrap">
+            鞋子
+          </button>
+          <button class="category-btn px-4 py-2 bg-gray-100 rounded-full text-sm font-medium whitespace-nowrap">
+            配饰
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+        <h2 class="font-bold text-gray-800 mb-3">我的衣橱</h2>
+        <div class="space-y-3">
+          <div class="outfit-card flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+            <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
+              <i class="fas fa-shirt text-blue-400 text-2xl"></i>
+            </div>
+            <div class="flex-1">
+              <p class="font-semibold text-gray-800">蓝色毛衣</p>
+              <p class="text-xs text-gray-500">上装 · 羊毛</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full">已穿</span>
+              <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+          </div>
+          
+          <div class="outfit-card flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+            <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
+              <i class="fas fa-vest text-gray-400 text-2xl"></i>
+            </div>
+            <div class="flex-1">
+              <p class="font-semibold text-gray-800">黑色羽绒服</p>
+              <p class="text-xs text-gray-500">外套 · 防风</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">未穿</span>
+              <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+          </div>
+          
+          <div class="outfit-card flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+            <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
+              <i class="fas fa-socks text-indigo-400 text-2xl"></i>
+            </div>
+            <div class="flex-1">
+              <p class="font-semibold text-gray-800">深色牛仔裤</p>
+              <p class="text-xs text-gray-500">下装 · 牛仔</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full">已穿</span>
+              <i class="fas fa-chevron-right text-gray-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg p-4 mb-4">
+        <h2 class="font-bold text-gray-800 mb-3">穿搭记录</h2>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-calendar-day text-blue-500"></i>
+            </div>
+            <div class="flex-1">
+              <p class="font-semibold text-gray-800">今天</p>
+              <p class="text-xs text-gray-500">蓝色毛衣 + 深色牛仔裤</p>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </div>
+          
+          <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+              <i class="fas fa-calendar-day text-purple-500"></i>
+            </div>
+            <div class="flex-1">
+              <p class="font-semibold text-gray-800">昨天</p>
+              <p class="text-xs text-gray-500">黑色羽绒服 + 运动裤</p>
+            </div>
+            <i class="fas fa-chevron-right text-gray-400"></i>
+          </div>
+        </div>
+      </div>
+
+      <button class="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-4 rounded-2xl font-semibold shadow-lg flex items-center justify-center gap-2 hover:shadow-xl transition-shadow">
+        <i class="fas fa-plus"></i>
+        添加穿搭
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

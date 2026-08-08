@@ -1,67 +1,272 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站案例</title>
+    <title>网站案例 · Showcase</title>
     <style>
-        .title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        li {
-            list-style: none;
+
+        :root {
+            --bg: #060818;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glow-1: #6c5ce7;
+            --glow-2: #00d2ff;
+            --text: #e8eaf6;
+            --text-dim: #8a8db5;
         }
-        a {
-            color: #333;
-            text-decoration: none;
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
-        .item {
-            display: inline-block;
-            width: 33%;
-            line-height: 50px;
-            margin-bottom: 10px;
+
+        /* 动态网格背景 */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(108, 92, 231, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 210, 255, 0.06) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 50%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 背景光晕 */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(108, 92, 231, 0.18), transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 60px 32px 80px;
+        }
+
+        /* 头部 */
+        header {
             text-align: center;
-            background-image:linear-gradient(120deg,#e0c3fc 0%, #8ec5fc 100%);
-            color: #fff;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: all 0.25s;
-            cursor: pointer;
+            margin-bottom: 64px;
+        }
+
+        header .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--glow-2);
+            background: rgba(0, 210, 255, 0.08);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        header .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--glow-2);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--glow-2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 30%, var(--glow-1) 60%, var(--glow-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: var(--text-dim);
+            font-size: 15px;
+        }
+
+        /* 分类标题 */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin: 40px 0 24px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 28px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--glow-1), var(--glow-2));
+            border-radius: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--card-border), transparent);
+        }
+
+        /* 卡片网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 96px;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 500;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.12), rgba(0, 210, 255, 0.12));
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.35s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(108, 92, 231, 0.5);
+            box-shadow:
+                0 8px 32px rgba(108, 92, 231, 0.25),
+                0 0 0 1px rgba(108, 92, 231, 0.3);
+        }
+
+        .card:hover::before,
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 右上角箭头标记 */
+        .card .arrow {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-size: 14px;
+            color: var(--text-dim);
+            opacity: 0;
+            transform: translate(-6px, 6px);
+            transition: all 0.35s;
+        }
+
+        .card:hover .arrow {
+            opacity: 1;
+            transform: translate(0, 0);
+            color: var(--glow-2);
+        }
+
+        @media (max-width: 640px) {
+            header h1 { font-size: 32px; }
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .card { height: 80px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
-    <div class="title">静态网站</div>
-    <ul>
-        <li>
-            <a class="item" href="app/index.html">app网站</a>
-        </li>
-        <li>
-            <a class="item" href="education/home.html">教育类</a>
-        </li>
-        <li>
-            <a class="item" href="furnish/index.html">家具商城类</a>
-        </li>
-        <li>
-            <a class="item" href="seo/index.html">seo</a>
-        </li>
-        <li>
-            <a class="item" href="travel/index.html">旅游类型</a>
-        </li>
-        <li>
-            <a class="item" href="wines/index.html">红酒介绍</a>
-        </li>
-        <li>
-            <a class="item" href="shoe/index.html">鞋子</a>
-        </li>
-    </ul>
-    <div class="title">UI网站</div>
-    <ul>
-        <li>
-            <a class="item" href="color-ui/index.html">color-ui</a>
-        </li>
-    </ul>
+    <div class="container">
+        <header>
+            <div class="badge">SHOWCASE</div>
+            <h1>网站案例</h1>
+            <p>静态网站与 UI 组件案例集合</p>
+        </header>
+
+        <div class="section-title">静态网站</div>
+        <div class="grid">
+            <a class="card" href="app/index.html"><span>App网站</span><span class="arrow">↗</span></a>
+            <a class="card" href="education/home.html"><span>教育类</span><span class="arrow">↗</span></a>
+            <a class="card" href="furnish/index.html"><span>家具商城</span><span class="arrow">↗</span></a>
+            <a class="card" href="seo/index.html"><span>SEO</span><span class="arrow">↗</span></a>
+            <a class="card" href="travel/index.html"><span>旅游类型</span><span class="arrow">↗</span></a>
+            <a class="card" href="wines/index.html"><span>红酒介绍</span><span class="arrow">↗</span></a>
+            <a class="card" href="shoe/index.html"><span>鞋子</span><span class="arrow">↗</span></a>
+            <a class="card" href="saas-landing.html"><span>广告投放平台</span><span class="arrow">↗</span></a>
+            <a class="card" href="software-saas-landing.html"><span>软件开发平台</span><span class="arrow">↗</span></a>
+            <a class="card" href="vue-landing.html"><span>Vue开发平台</span><span class="arrow">↗</span></a>
+            <a class="card" href="wegic.html"><span>Wegic网站</span><span class="arrow">↗</span></a>
+            <a class="card" href="huahuo/index.html"><span>花火科技</span><span class="arrow">↗</span></a>
+            <a class="card" href="weather-outfit/weather.html"><span>天气</span><span class="arrow">↗</span></a>
+        </div>
+
+        <div class="section-title">UI网站</div>
+        <div class="grid">
+            <a class="card" href="color-ui/index.html"><span>Color UI</span><span class="arrow">↗</span></a>
+        </div>
+    </div>
 </body>
 </html>

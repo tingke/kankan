@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.hhstar.cn/application.html -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>最新动态</title>
+<meta name="keywords" content="最新动态" />
+<meta name="description" content="最新动态" />
+<link rel="icon" href="static/huofa/logo.png" />
+<link rel="stylesheet" href="static/huofa/common.css" />
+<link rel="stylesheet" href="static/huofa/swiper.min.css" />
+<link rel="stylesheet" href="static/huofa/animate.min.css" />
+<link rel="stylesheet" href="static/huofa/style.css" type="text/css" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="format-detection" content="telephone=no" />
+<script src="static/huofa/jquery-1.11.0.min.js"></script>
+<script src="static/huofa/jquery.vidbacking.js" type="text/javascript"></script>
+<script src="static/huofa/bezier.js" type="text/javascript"></script>
+
+
+    <style>
+      .news_wrap {
+        margin-top: 156px;
+        margin-bottom: 39px;
+      }
+      .news_wrap ul {
+        margin-top: 40px;
+        overflow: hidden;
+      }
+      .news_wrap li {
+        float: left;
+        width: 32%;
+        margin-right: 2%;
+        margin-bottom: 2%;
+      }
+      .news_wrap li:hover p {
+        background: #ffd900;
+      }
+      .news_wrap li:nth-of-type(3n) {
+        margin-right: 0px;
+      }
+      .news_wrap li img {
+        width: 100%;
+        height: 208px;
+      }
+      .news_wrap li p {
+        height: 72px;
+        background: #e8e8e8;
+        line-height: 72px;
+        padding: 0px 16px;
+        font-family: 'SourceHanSansCNNormal', 'Microsoft YaHei', Helvetica Neue, Helvetica, Arial,
+          sans-serif;
+        font-size: 0.16rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-clamp: 1;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        display: -moz-box;
+        -moz-line-clamp: 1;
+        -moz-box-orient: vertical;
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: normal;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      .news_wrap li p a {
+        color: #333;
+      }
+      .news_wrap h3 {
+        font-size: 0.28rem;
+        font-weight: bold;
+        color: #fff;
+        position: relative;
+        line-height: 0.28rem;
+        padding-left: 0.19rem;
+        font-family: 'SourceHanSansCNBold', 'Microsoft YaHei', Helvetica Neue, Helvetica, Arial,
+          sans-serif;
+      }
+      .news_wrap h3:before {
+        content: '';
+        display: block;
+        width: 3px;
+        background: #ffd900;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: 2px;
+      }
+
+      .listpage {
+        width: 100%;
+        text-align: center;
+        color: #666;
+        margin: 0px auto 0px;
+        overflow: hidden;
+      }
+      .listpage a,
+      .listpage span {
+        display: inline-block;
+        font-size: 12px;
+        width: 30px;
+        height: 30px;
+        line-height: 28px;
+        border: 1px solid #363838;
+        color: #ffffff;
+        margin-right: 15px;
+      }
+      .listpage a.active,
+      .listpage a:hover,
+      .listpage span,
+      .listpage a.thisclass {
+        border: 1px solid #ffd900;
+      }
+      .listpage .listpage-next,
+      .listpage .listpage-prev {
+        color: #818287;
+      }
+      .listpagenew {
+        margin-top: 15px;
+      }
+
+      @media screen and (max-width: 1080px) {
+        .news_wrap h3 {
+          font-size: 20px;
+        }
+        .news_wrap {
+          margin-top: 80px;
+        }
+        .news_wrap li {
+          width: 100%;
+          margin-right: 0px;
+          margin-bottom: 30px;
+        }
+        .news_wrap li:nth-of-type(even) {
+          float: none;
+        }
+        .news_wrap li p {
+          height: 36px;
+          line-height: 36px;
+          padding: 0px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobi_navBar">
+  <div id="hamburger" class="protip">
+    <span></span>
+  </div>
+</div>
+<div class="header" id="header_inside">
+  <div class="logo">
+    <a href="index.html"><img src="static/huofa/logo.png" /></a>
+  </div>
+  <ul class="menu">
+    <li class="menuli" id="productnav"><a href="index.html#product">产品</a></li>
+    <li class="menuli" id="projectnav"><a href="index.html#project">项目</a></li>
+    <li class="menuli" id="companynav"><a href="index.html#company">简介</a></li>
+    <li class="menuli" id="newsnav"><a href="news.html">动态</a></li>
+    <li class="menuli" id="contactnav"><a href="index.html#contact">联系</a></li>
+  </ul>
+</div>
+
+
+    <div class="swiper-container swiper-container-page">
+      <div class="swiper-wrapper">
+        <div class="wrapper news_wrap" id="news_wrap_list">
+          <h3 data-scroll-reveal>行业动态</h3>
+          <ul>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/CJ9v5OmbCHx4kBPu76TWRg"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/16c0f65a0b77c208d126e687c35d38f8.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/CJ9v5OmbCHx4kBPu76TWRg"
+                  target="_blank"
+                >
+                  花火产品 |「蛇年送祝福」                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/hbjFPsZN6Ynq3tOHeMbR7A"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/69b73b8bcbdb9880039ac70cb02d312f.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/hbjFPsZN6Ynq3tOHeMbR7A"
+                  target="_blank"
+                >
+                  HUAHUO产品 |「古韵霓裳」AI古代服饰换装新品                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/w_Ah5JwM8PR00NwOeUyBaA"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/72427d946594463c1ed1cb342040de96.jpg" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/w_Ah5JwM8PR00NwOeUyBaA"
+                  target="_blank"
+                >
+                  花火动态｜荣获&ldquo;2024全国博物馆融合发展创新案例&rdquo;                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/lgmKr_zJbK_93QmRU25bSA"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/16c0f65a0b77c208d126e687c35d38f8.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/lgmKr_zJbK_93QmRU25bSA"
+                  target="_blank"
+                >
+                  花火项目 | 时传祥精神宣教中心正式开展                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/Ykd1lS5lchL_M2S-bBWSZw"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/458c50b953aa9cd316bdce404b6c4f37.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/Ykd1lS5lchL_M2S-bBWSZw"
+                  target="_blank"
+                >
+                  花火产品 | 青铜指语&middot;青铜器教育益智游戏                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/OFQcbo_M8QlHqJ2rjyk-Bg"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/66062e190cc6f317f7f441dc5582d384.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/OFQcbo_M8QlHqJ2rjyk-Bg"
+                  target="_blank"
+                >
+                  花火产品 | 丹青雅集&middot;建构书画艺术的数字世界！                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/rtJva53nsnYvKmB2ibAZZg"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/69b73b8bcbdb9880039ac70cb02d312f.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/rtJva53nsnYvKmB2ibAZZg"
+                  target="_blank"
+                >
+                  花火动态 | 花火新产品亮相第十届&ldquo;博博会&rdquo;                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/b2nK8gSYbIyPLpDNbobBag"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/72427d946594463c1ed1cb342040de96.jpg" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/b2nK8gSYbIyPLpDNbobBag"
+                  target="_blank"
+                >
+                  花火项目 | 蔡志忠美术馆开馆啦！                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/litzMsFq8xz7RTkhiRBACg"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/d7a47329934ef3236be88324fdc1475f.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/litzMsFq8xz7RTkhiRBACg"
+                  target="_blank"
+                >
+                  花火项目｜忻州5G+智慧应用联合创新中心                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="#"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/b9ca607f17b6a432e0e2282be79796c9.png" />
+              </a>
+              <p>
+                <a
+                  href="#"
+                  target="_blank"
+                >
+                  文博视野 | 2024年国际博物馆日主题发布                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/jPviA3yUsbgzglL2naXAmw"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/16c0f65a0b77c208d126e687c35d38f8.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/jPviA3yUsbgzglL2naXAmw"
+                  target="_blank"
+                >
+                  HUAHUO产品 | AI唤龙，召唤你的新年守护龙！                </a>
+              </p>
+            </li>
+                        <li class="showOnfocus">
+              <a
+                href="https://mp.weixin.qq.com/s/R4dM5rR3D_2Vo8g4PG0lPQ"
+                class="scale-img"
+                target="_blank"
+              >
+                <img src="uploads/20250228/66062e190cc6f317f7f441dc5582d384.png" />
+              </a>
+              <p>
+                <a
+                  href="https://mp.weixin.qq.com/s/R4dM5rR3D_2Vo8g4PG0lPQ"
+                  target="_blank"
+                >
+                  HUAHUO产品 | AI换脸产品之油画系列                </a>
+              </p>
+            </li>
+                      </ul>
+          <div class="listpage listpagenew" data-scroll-reveal>  <style type="text/css">
+            .pagination p{
+                margin:0;
+                cursor:pointer
+            }
+            .pagination{
+                display: inline-block;
+                height:42px;
+                padding:20px 0px;
+                margin: 0 auto;
+            }
+            .pagination a{
+                display:block;
+                float:left;
+                margin-right:10px;
+                padding:0;
+                height:26px;
+                border:1px #cccccc solid;
+                background:transparent;
+                text-decoration:none;
+                color:white;
+                font-size:12px;
+                line-height:24px;
+            }
+            .pagination a:hover{
+                color:white;
+                background: transparent;
+                border:1px #fed911 solid;
+            }
+            .pagination a.cur{
+                background:transparent;
+                color:#fff;
+                border: 1px #fed911 solid;
+            }
+            .pagination p{
+                float:left;
+                padding:0px 5px;
+                font-size:12px;
+                height:26px;
+                color:#bbb;
+                border:1px #ccc solid;
+                background:transparent;
+                margin-right:8px;
+                cursor:not-allowed;
+            }
+            .pagination p.pageRemark{
+                border-style:none;
+                background:none;
+                margin-right:0px;
+                padding:4px 0px;
+                color:#666;
+            }
+            .pagination p.pageRemark b{
+                color:red;
+            }
+            .pagination p.pageEllipsis{
+                border-style:none;
+                background:none;
+                padding:4px 0px;
+                color:white;
+            }
+            .dates li {font-size: 14px;margin:20px 0}
+            .dates li span{float:right}
+        </style><div class="pagination"><p><svg t="1740747263973" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3439" width="200" height="200" style="width: 18px;height: 22px;fill: white;"><path d="M299.52 521.728c-3.2768-13.9264 0.512-29.184 11.3664-40.0384l341.9136-341.9136c16.6912-16.6912 43.7248-16.6912 60.3136 0s16.6912 43.7248 0 60.3136L401.3056 512l311.9104 311.9104c16.6912 16.6912 16.6912 43.7248 0 60.3136s-43.7248 16.6912-60.3136 0l-342.016-341.9136c-5.632-5.632-9.6256-12.8-11.3664-20.5824z" p-id="3440"></path></svg></p> <a href="" class="cur">1</a><a href="#" title="第"2"页" >2</a><a href="#" title="第"3"页" >3</a> <a href='#' title='下一页'><svg t="1740747065594" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2941" width="200" height="200" style="width: 18px;height: 23px;fill: white;"><path d="M724.48 521.728c-1.8432 7.7824-5.7344 14.848-11.3664 20.48l-341.9136 342.016c-16.6912 16.6912-43.7248 16.6912-60.3136 0s-16.6912-43.7248 0-60.3136L622.6944 512 310.8864 200.0896c-16.6912-16.6912-16.6912-43.7248 0-60.3136 16.6912-16.6912 43.7248-16.6912 60.3136 0l341.9136 341.9136c10.8544 10.8544 14.6432 26.112 11.3664 40.0384z" p-id="2942"></path></svg></a></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+  北京花火时代科技有限公司 |
+  <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17033495号</a>
+</div>
+
+<script type="text/javascript" src="static/huofa/scrollReveal.js"></script>
+<script src="static/huofa/swiper.min.js"></script>
+<script src="static/huofa/swiper.animate.min.js"></script>
+<script src="static/huofa/common.js"></script>
+<script src="static/huofa/global.js"></script>
+<script type="text/javascript" src="static/huofa/jweixin-1.2.0.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>广告智能投放平台 - 专业媒体广告 SaaS 解决方案</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3B82F6;
+            --primary-light: #60A5FA;
+            --primary-dark: #2563EB;
+            --secondary: #0EA5E9;
+            --accent: #F97316;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #F0F9FF 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gray-900);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 980px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, minmax(280px, auto));
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .bento-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+        }
+
+        .card-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .card-wide {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .card-tall {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        .card-small {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .card-gradient-blue {
+            background: linear-gradient(135deg, #3B82F6 0%, #0EA5E9 100%);
+            color: white;
+        }
+
+        .card-gradient-purple {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            color: white;
+        }
+
+        .card-gradient-green {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+        }
+
+        .card-gradient-orange {
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            color: white;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-description {
+            font-size: 15px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .card-stat {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .card-stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .pricing-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-header {
+            margin-bottom: 24px;
+        }
+
+        .pricing-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .pricing-price span {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .pricing-features {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .pricing-features li svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            margin-top: 20px;
+        }
+
+        .pricing-cta .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+        }
+
+        .feature-list li svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 16px 0;
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .cta-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cta-card h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .cta-card p {
+            font-size: 16px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-700);
+            padding-top: 30px;
+            text-align: center;
+            color: var(--gray-400);
+            font-size: 14px;
+        }
+
+        @media (max-width: 1200px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+
+            .card-large,
+            .card-wide,
+            .card-tall,
+            .card-small {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .card-large {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-large {
+                grid-column: span 1;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .bento-card {
+                padding: 24px;
+            }
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body x-data="bentoApp()">
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">广告智能投放</a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">功能</a>
+                <a href="#pricing" class="nav-link">定价</a>
+                <a href="#faq" class="nav-link">常见问题</a>
+                <a href="#" class="btn btn-primary">免费试用</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>智能广告投放<br><span>提升 10 倍 ROI</span></h1>
+            <p>基于 AI 的媒体广告管理平台，帮助广告主精准定位目标受众，优化广告投放策略，实现更高的转化率和投资回报率。</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="bento-grid">
+            <div class="bento-card card-large card-gradient-blue">
+                <div class="card-icon" style="background: rgba(255, 255, 255, 0.2);">🎯</div>
+                <h3 class="card-title">智能受众定位</h3>
+                <p class="card-description">基于大数据和机器学习，精准识别目标受众。通过用户画像分析和行为预测模型，实时优化您的广告投放策略，确保每一分预算都花在刀刃上。</p>
+            </div>
+
+            <div class="bento-card card-tall card-gradient-purple">
+                <div class="card-stat">10,000+</div>
+                <p class="card-stat-label">活跃广告主</p>
+                <div style="margin-top: 32px;">
+                    <div class="card-icon" style="background: rgba(255, 255, 255, 0.2);">📊</div>
+                    <h3 class="card-title">数据驱动决策</h3>
+                    <p class="card-description">实时监控广告效果，多维度数据分析，让决策更科学。</p>
+                </div>
+            </div>
+
+            <div class="bento-card card-small card-gradient-green">
+                <div class="card-stat">5000万+</div>
+                <p class="card-stat-label">日均广告展示</p>
+            </div>
+
+            <div class="bento-card card-wide">
+                <div class="card-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);">🚀</div>
+                <h3 class="card-title">多渠道管理</h3>
+                <p class="card-description">一站式管理 20+ 广告平台，统一数据看板，跨平台预算分配，让广告投放更高效。</p>
+                <ul class="feature-list" style="margin-top: 20px;">
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        支持 20+ 广告平台
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        统一数据报表
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        跨平台预算分配
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bento-card card-small">
+                <div class="card-stat">3.5倍</div>
+                <p class="card-stat-label">平均 ROI 提升</p>
+            </div>
+
+            <div class="bento-card card-wide card-gradient-orange">
+                <div class="card-icon" style="background: rgba(255, 255, 255, 0.2);">🎨</div>
+                <h3 class="card-title">智能创意优化</h3>
+                <p class="card-description">AI 自动测试和优化广告创意，A/B 测试自动化，创意效果预测，动态素材生成，让您的广告更具吸引力。</p>
+            </div>
+
+            <div class="bento-card card-large pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">基础版</h3>
+                    <div class="pricing-price">¥399<span>/月</span></div>
+                    <p style="font-size: 14px; opacity: 0.8; margin-top: 8px;">适合小型企业和初创团队</p>
+                </div>
+                <ul class="pricing-features">
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        最多 5 个广告账户
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        月度预算 ¥50,000
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        基础数据分析
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        邮件支持
+                    </li>
+                </ul>
+                <div class="pricing-cta">
+                    <a href="#" class="btn btn-secondary">开始试用</a>
+                </div>
+            </div>
+
+            <div class="bento-card card-large pricing-card card-gradient-blue">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">专业版</h3>
+                    <div class="pricing-price">¥999<span>/月</span></div>
+                    <p style="font-size: 14px; opacity: 0.9; margin-top: 8px;">适合成长中的企业和营销团队</p>
+                </div>
+                <ul class="pricing-features">
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        最多 20 个广告账户
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        月度预算 ¥500,000
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        高级数据分析
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        7x24 专属客服
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        高级 AI 功能
+                    </li>
+                </ul>
+                <div class="pricing-cta">
+                    <a href="#" class="btn" style="background: white; color: var(--primary);">开始试用</a>
+                </div>
+            </div>
+
+            <div class="bento-card card-tall">
+                <div class="card-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);">❓</div>
+                <h3 class="card-title">常见问题</h3>
+                <template x-for="(faq, index) in faqs" :key="index">
+                    <div class="faq-item" :class="{ active: activeFaq === index }">
+                        <div class="faq-question" @click="activeFaq = activeFaq === index ? null : index">
+                            <span x-text="faq.question"></span>
+                            <svg viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p x-text="faq.answer"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="bento-card card-small">
+                <div class="card-stat">99.9%</div>
+                <p class="card-stat-label">系统可用性</p>
+            </div>
+
+            <div class="bento-card card-large pricing-card">
+                <div class="pricing-header">
+                    <h3 class="pricing-name">企业版</h3>
+                    <div class="pricing-price">¥2,499<span>/月</span></div>
+                    <p style="font-size: 14px; opacity: 0.8; margin-top: 8px;">适合大型企业和代理商</p>
+                </div>
+                <ul class="pricing-features">
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        无限广告账户
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        无预算限制
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        定制化数据报表
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        专属客户经理
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        API 访问权限
+                    </li>
+                </ul>
+                <div class="pricing-cta">
+                    <a href="#" class="btn btn-secondary">联系销售</a>
+                </div>
+            </div>
+
+            <div class="bento-card card-wide cta-card card-gradient-green">
+                <h2>立即开始</h2>
+                <p>14 天免费试用，无需信用卡，随时取消</p>
+                <a href="#" class="btn" style="background: white; color: var(--success);">免费试用 14 天</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="#">功能介绍</a></li>
+                        <li><a href="#">定价方案</a></li>
+                        <li><a href="#">客户案例</a></li>
+                        <li><a href="#">更新日志</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>资源</h3>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">API 文档</a></li>
+                        <li><a href="#">博客</a></li>
+                        <li><a href="#">网络研讨会</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>公司</h3>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>法律</h3>
+                    <ul>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">Cookie 政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 广告智能投放平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function bentoApp() {
+            return {
+                activeFaq: null,
+                faqs: [
+                    {
+                        question: '如何开始使用？',
+                        answer: '注册账户后，您可以立即开始 14 天免费试用。我们提供详细的入门指南和视频教程，帮助您快速上手。'
+                    },
+                    {
+                        question: '支持哪些平台？',
+                        answer: '支持 20+ 主流广告平台，包括百度、腾讯、字节跳动、Facebook、Google Ads 等。'
+                    },
+                    {
+                        question: 'AI 如何优化？',
+                        answer: 'AI 通过机器学习分析数据，自动识别最佳受众、优化出价策略、测试广告创意。'
+                    },
+                    {
+                        question: '可以随时取消吗？',
+                        answer: '可以随时取消订阅，无需任何理由。取消后服务在当前计费周期结束后停止。'
+                    }
+                ]
+            }
+        }
+    </script>
+</body>
+</html>

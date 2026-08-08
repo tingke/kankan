@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueFlow - 现代化 Vue 开发平台</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #42B883;
+            --primary-light: #34D399;
+            --primary-dark: #059669;
+            --secondary: #10B981;
+            --cta: #F59E0B;
+            --cta-hover: #D97706;
+            --background: #F0FDF4;
+            --text: #1E293B;
+            --text-muted: #64748B;
+            --border: #E5E7EB;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 16px 0;
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(66, 184, 131, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        .btn-cta {
+            background: var(--cta);
+            color: var(--white);
+        }
+
+        .btn-cta:hover {
+            background: var(--cta-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(66, 184, 131, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 80px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(66, 184, 131, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .showcase {
+            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+            border-radius: 24px;
+            padding: 80px;
+            text-align: center;
+        }
+
+        .showcase h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .showcase p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .showcase-image {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .showcase-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(66, 184, 131, 0.15);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .pricing-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price span {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .pricing-period {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            width: 100%;
+        }
+
+        .testimonials {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 64px;
+            margin-bottom: 80px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--background);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .testimonial-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .testimonial-content {
+            font-size: 16px;
+            color: var(--text);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 24px;
+            padding: 80px 40px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .cta-section .btn:hover {
+            background: var(--background);
+        }
+
+        .footer {
+            background: var(--text);
+            color: var(--white);
+            padding: 80px 0 32px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity 0.3s ease;
+        }
+
+        .fade-enter-from,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .showcase {
+                padding: 40px 24px;
+            }
+        }
+
+        [v-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <nav class="navbar" :class="{ scrolled: isScrolled }">
+            <div class="container navbar-content">
+                <a href="#" class="logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 2h-9l1 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13 18v2a2 2 0 002 2h6a2 2 0 002-2v-2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13 6v2a2 2 0 012 2h6a2 2 0 012-2V6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    VueFlow
+                </a>
+                <div class="nav-links">
+                    <a
+                        v-for="item in navItems"
+                        :key="item.id"
+                        @click="scrollToSection(item.id)"
+                        class="nav-link"
+                        :class="{ active: activeSection === item.id }"
+                    >
+                        {{ item.label }}
+                    </a>
+                    <button class="btn btn-primary">免费试用</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    新版本 4.0 已发布
+                </div>
+                <h1>现代化 Vue 开发<br><span>提升 10 倍效率</span></h1>
+                <p>VueFlow 是一个集成了组件库、状态管理、路由和构建工具的一体化 Vue 开发平台，帮助开发者更快地构建高质量应用。</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v4a1 1 0 102 0V7zm1 8a1 1 0 10-2 0 1 1 0 012 0z" clip-rule="evenodd"/>
+                        </svg>
+                        免费开始使用
+                    </button>
+                    <button class="btn btn-secondary">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd"/>
+                        </svg>
+                        观看演示
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item" v-for="stat in stats" :key="stat.label">
+                        <div class="stat-number">{{ stat.number }}</div>
+                        <div class="stat-label">{{ stat.label }}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>强大的开发工具</h2>
+                    <p>从组件库到部署，VueFlow 提供完整的开发生命周期管理</p>
+                </div>
+                <div class="features-grid">
+                    <div
+                        class="feature-card"
+                        v-for="feature in features"
+                        :key="feature.id"
+                        @mouseenter="hoveredFeature = feature.id"
+                        @mouseleave="hoveredFeature = null"
+                    >
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path v-html="feature.icon"></path>
+                            </svg>
+                        </div>
+                        <h3>{{ feature.title }}</h3>
+                        <p>{{ feature.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="showcase">
+                    <h2>一体化开发体验</h2>
+                    <p>从组件编写到生产部署，VueFlow 提供无缝的开发体验，让您专注于创造价值。</p>
+                    <div class="showcase-image">
+                        <svg viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="1200" height="600" fill="#ECFDF5"/>
+                            <rect x="100" y="80" width="400" height="280" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+                            <rect x="120" y="100" width="360" height="20" rx="4" fill="#E5E7EB"/>
+                            <rect x="120" y="140" width="200" height="12" rx="4" fill="#94A3B8"/>
+                            <rect x="120" y="164" width="280" height="12" rx="4" fill="#CBD5E1"/>
+                            <rect x="120" y="188" width="240" height="12" rx="4" fill="#CBD5E1"/>
+                            <rect x="120" y="220" width="100" height="100" rx="8" fill="#ECFDF5" stroke="#42B883" stroke-width="2"/>
+                            <rect x="240" y="220" width="100" height="100" rx="8" fill="#ECFDF5" stroke="#42B883" stroke-width="2"/>
+                            <rect x="360" y="220" width="100" height="100" rx="8" fill="#ECFDF5" stroke="#42B883" stroke-width="2"/>
+
+                            <rect x="700" y="80" width="400" height="280" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+                            <rect x="720" y="100" width="360" height="20" rx="4" fill="#E5E7EB"/>
+                            <circle cx="800" cy="150" r="40" fill="#10B981" opacity="0.2"/>
+                            <circle cx="800" cy="150" r="30" fill="#10B981" opacity="0.4"/>
+                            <circle cx="800" cy="150" r="20" fill="#10B981"/>
+                            <rect x="860" y="120" width="200" height="60" rx="8" fill="#D1FAE5"/>
+                            <rect x="720" y="200" width="360" height="140" rx="8" fill="#ECFDF5" stroke="#E5E7EB"/>
+
+                            <rect x="100" y="420" width="1000" height="120" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+                            <rect x="140" y="460" width="200" height="40" rx="8" fill="#42B883"/>
+                            <rect x="380" y="460" width="200" height="40" rx="8" fill="#E5E7EB"/>
+                            <rect x="620" y="460" width="200" height="40" rx="8" fill="#E5E7EB"/>
+                            <rect x="860" y="460" width="200" height="40" rx="8" fill="#10B981"/>
+
+                            <path d="M500 340 L500 420" stroke="#42B883" stroke-width="3" stroke-dasharray="8 4"/>
+                            <path d="M900 340 L900 420" stroke="#10B981" stroke-width="3" stroke-dasharray="8 4"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>灵活的定价方案</h2>
+                    <p>选择适合您团队的方案，随时升级或降级</p>
+                </div>
+                <div class="pricing-grid">
+                    <div
+                        class="pricing-card"
+                        v-for="plan in pricingPlans"
+                        :key="plan.id"
+                        :class="{ popular: plan.popular }"
+                    >
+                        <div v-if="plan.popular" class="popular-badge">最受欢迎</div>
+                        <h3>{{ plan.name }}</h3>
+                        <p class="pricing-description">{{ plan.description }}</p>
+                        <div class="pricing-price">¥{{ plan.price }}<span v-if="plan.price > 0">/月</span></div>
+                        <p class="pricing-period">{{ plan.period }}</p>
+                        <ul class="pricing-features">
+                            <li v-for="feature in plan.features" :key="feature">
+                                <svg viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                {{ feature }}
+                            </li>
+                        </ul>
+                        <button class="btn" :class="plan.popular ? 'btn-primary' : 'btn-secondary'" @click="selectPlan(plan)">
+                            {{ plan.cta }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>客户评价</h2>
+                    <p>听听来自 80,000+ 开发者的真实反馈</p>
+                </div>
+                <div class="testimonials">
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card" v-for="testimonial in testimonials" :key="testimonial.id">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">{{ testimonial.avatar }}</div>
+                                <div class="testimonial-info">
+                                    <h4>{{ testimonial.name }}</h4>
+                                    <p>{{ testimonial.role }}</p>
+                                </div>
+                            </div>
+                            <p class="testimonial-content">"{{ testimonial.content }}"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="cta-section">
+                    <h2>准备好提升开发效率了吗？</h2>
+                    <p>立即开始免费试用，无需信用卡，随时取消。加入 80,000+ 开发者，体验 Vue 开发的未来。</p>
+                    <button class="btn btn-large">
+                        免费试用 14 天
+                    </button>
+                    <p style="margin-top: 24px; font-size: 14px; opacity: 0.8;">已有 80,000+ 开发者在使用 VueFlow</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section" v-for="section in footerSections" :key="section.title">
+                        <h3>{{ section.title }}</h3>
+                        <ul>
+                            <li v-for="link in section.links" :key="link">
+                                <a @click="handleFooterClick(link)">{{ link }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 VueFlow. 保留所有权利.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted, onUnmounted } = Vue;
+
+        createApp({
+            setup() {
+                const isScrolled = ref(false);
+                const activeSection = ref('hero');
+                const hoveredFeature = ref(null);
+
+                const navItems = ref([
+                    { id: 'features', label: '功能' },
+                    { id: 'pricing', label: '定价' },
+                    { id: 'testimonials', label: '客户评价' }
+                ]);
+
+                const stats = ref([
+                    { number: '80,000+', label: '开发团队' },
+                    { number: '500万+', label: '组件下载' },
+                    { number: '99.9%', label: '系统可用性' },
+                    { number: '4.9/5', label: '用户评分' }
+                ]);
+
+                const features = ref([
+                    {
+                        id: 1,
+                        title: '组件库',
+                        description: '500+ 预构建的 Vue 3 组件，支持主题定制，开箱即用，大幅提升开发效率。',
+                        icon: '<path d="M4 5a1 1 0 011-1v14a1 1 0 01-1 1H2a1 1 0 01-1-1V4a1 1 0 011-1h1a1 1 0 001-1V2a1 1 0 011-1h4a1 1 0 011 1v1a1 1 0 001 1h3a1 1 0 001-1V6a1 1 0 00-1-1H4a1 1 0 00-1 1v7a1 1 0 001 1h3a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1-1V2a1 1 0 011-1z" stroke-linecap="round" stroke-linejoin="round"/>'
+                    },
+                    {
+                        id: 2,
+                        title: '状态管理',
+                        description: '内置 Pinia 状态管理，支持 TypeScript，提供类型安全和开发体验。',
+                        icon: '<path d="M4 4v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H6a2 2 0 00-2 2zm0 2h16v2H4V6zm2 8h12v2H6v-2zm2 4h12v2H6v-2z" stroke-linecap="round" stroke-linejoin="round"/>'
+                    },
+                    {
+                        id: 3,
+                        title: '路由管理',
+                        description: '基于 Vue Router 4 的路由系统，支持动态路由、路由守卫和懒加载。',
+                        icon: '<path d="M13 5l7 7-7 7M5 5l-7 7-7-7M12 5l7 7M12 5l-7 7" stroke-linecap="round" stroke-linejoin="round"/>'
+                    },
+                    {
+                        id: 4,
+                        title: '团队协作',
+                        description: '实时协作编辑、代码审查和任务管理，让团队沟通更顺畅。',
+                        icon: '<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"/>'
+                    },
+                    {
+                        id: 5,
+                        title: '构建工具',
+                        description: 'Vite 驱动的快速构建，支持 HMR、代码分割和优化。',
+                        icon: '<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"/>'
+                    },
+                    {
+                        id: 6,
+                        title: 'TypeScript 支持',
+                        description: '完整的 TypeScript 支持，类型检查和智能提示，提升代码质量。',
+                        icon: '<path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/>'
+                    }
+                ]);
+
+                const pricingPlans = ref([
+                    {
+                        id: 'free',
+                        name: '个人版',
+                        description: '适合独立开发者和小型项目',
+                        price: 0,
+                        period: '永久免费',
+                        features: ['无限组件使用', '基础状态管理', '社区支持'],
+                        cta: '免费开始',
+                        popular: false
+                    },
+                    {
+                        id: 'team',
+                        name: '团队版',
+                        description: '适合 5-50 人的开发团队',
+                        price: 199,
+                        period: '每人每月',
+                        features: ['无限组件使用', '高级状态管理', '团队协作', '优先邮件支持'],
+                        cta: '开始试用',
+                        popular: true
+                    },
+                    {
+                        id: 'enterprise',
+                        name: '企业版',
+                        description: '适合大型企业和定制需求',
+                        price: 499,
+                        period: '每人每月',
+                        features: ['所有团队版功能', '专属客户经理', '定制化部署', 'SLA 保证'],
+                        cta: '联系销售',
+                        popular: false
+                    }
+                ]);
+
+                const testimonials = ref([
+                    {
+                        id: 1,
+                        name: '张伟',
+                        avatar: '张',
+                        role: '技术总监，某互联网公司',
+                        content: 'VueFlow 帮助我们的团队将开发效率提升了 3 倍。组件库非常丰富，状态管理也很强大。'
+                    },
+                    {
+                        id: 2,
+                        name: '李明',
+                        avatar: '李',
+                        role: '全栈开发者，独立开发者',
+                        content: '作为独立开发者，VueFlow 的个人版完全满足我的需求。界面简洁，功能强大。'
+                    },
+                    {
+                        id: 3,
+                        name: '王芳',
+                        avatar: '王',
+                        role: '产品经理，某科技公司',
+                        content: '团队协作功能让我们的沟通效率大幅提升。代码审查、任务管理都在一个平台上。'
+                    },
+                    {
+                        id: 4,
+                        name: '陈强',
+                        avatar: '陈',
+                        role: 'CTO，某初创公司',
+                        content: '构建工具非常快速，HMR 让开发体验极佳。VueFlow 真的改变了我们的工作方式。'
+                    }
+                ]);
+
+                const footerSections = ref([
+                    {
+                        title: '产品',
+                        links: ['功能介绍', '定价方案', '更新日志', '路线图']
+                    },
+                    {
+                        title: '资源',
+                        links: ['文档中心', 'API 参考', '博客', '社区论坛']
+                    },
+                    {
+                        title: '公司',
+                        links: ['关于我们', '加入我们', '联系方式', '合作伙伴']
+                    },
+                    {
+                        title: '法律',
+                        links: ['隐私政策', '服务条款', 'Cookie 政策', '安全合规']
+                    }
+                ]);
+
+                const handleScroll = () => {
+                    isScrolled.value = window.scrollY > 50;
+
+                    const sections = ['hero', 'features', 'pricing', 'testimonials'];
+                    for (const sectionId of sections) {
+                        const element = document.getElementById(sectionId);
+                        if (element) {
+                            const rect = element.getBoundingClientRect();
+                            if (rect.top <= 100) {
+                                activeSection.value = sectionId;
+                                break;
+                            }
+                        }
+                    }
+                };
+
+                const scrollToSection = (sectionId) => {
+                    const element = document.getElementById(sectionId);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                };
+
+                const selectPlan = (plan) => {
+                    console.log('Selected plan:', plan.name);
+                };
+
+                const handleFooterClick = (link) => {
+                    console.log('Footer link clicked:', link);
+                };
+
+                onMounted(() => {
+                    window.addEventListener('scroll', handleScroll);
+                });
+
+                onUnmounted(() => {
+                    window.removeEventListener('scroll', handleScroll);
+                });
+
+                return {
+                    isScrolled,
+                    activeSection,
+                    hoveredFeature,
+                    navItems,
+                    stats,
+                    features,
+                    pricingPlans,
+                    testimonials,
+                    footerSections,
+                    scrollToSection,
+                    selectPlan,
+                    handleFooterClick
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

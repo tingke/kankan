@@ -1,0 +1,209 @@
+.top-header {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+}
+
+.top-header .title {
+  font-size: 0.54rem;
+  font-weight: bold;
+  line-height: 1.44;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.top-header .sub-title {
+  font-size: 0.2rem;
+  font-weight: bold;
+  line-height: 1.625;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.top-header .tip {
+  font-size: 0.2rem;
+  font-weight: bold;
+  line-height: 1.625;
+  letter-spacing: 0px;
+  color: rgba(184, 194, 212, 1);
+  text-align: center;
+}
+
+.top-header .title + .sub-title {
+  margin-top: 0.1rem;
+}
+
+.top-header .title + .tip {
+  margin-top: 0.3rem;
+}
+
+.stage-wrapper {
+  position: relative;
+  width: 14rem;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.stage-wrapper .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-wrapper .header .title {
+  font-size: 0.36rem;
+  font-weight: bold;
+  line-height: 1.44;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.stage-wrapper .header .sub-title {
+  font-size: 0.18rem;
+  font-weight: bold;
+  line-height: 1.625;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.stage-wrapper .header .tip {
+  font-size: 0.18rem;
+  font-weight: normal;
+  line-height: 1.625;
+  letter-spacing: 0px;
+  color: rgba(184, 194, 212, 1);
+  margin-top: 0.3rem;
+}
+
+.stage-wrapper .content {
+  position: relative;
+  width: 100%;
+}
+
+.stage-wrapper .header + .content {
+  margin-top: 0.6rem;
+}
+
+.stage-wrapper-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-wrapper .stage-wrapper-sticky::before {
+  content: ' ';
+  position: absolute;
+  filter: blur(120px);
+  z-index: -1;
+}
+
+.stage-wrapper:nth-child(odd) .stage-wrapper-sticky::before {
+  width: 8rem;
+  height: 6.22rem;
+  left: 3.93rem;
+  top: 0.9rem;
+  background: linear-gradient(270deg, rgba(69, 202, 255, 0) 0%, rgba(66, 123, 255, 1) 100%);
+}
+
+.stage-wrapper:nth-child(even) .stage-wrapper-sticky::before {
+  width: 8rem;
+  height: 6.22rem;
+  left: 3.43rem;
+  top: 0.66rem;
+  background: linear-gradient(270deg, rgba(66, 123, 255, 1) 0%, rgba(0, 150, 209, 0) 100%);
+}
+
+.gallery-section .gallery-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-section .gallery-wrapper .gallery-item {
+  position: relative;
+  width: 2.61rem;
+  flex-shrink: 0;
+  height: 6.04rem;
+  padding: 0;
+  border-radius: 0.1rem;
+  border: 1px solid rgba(69, 202, 255, 1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: width 0.3s ease-in-out;
+}
+
+.gallery-section .gallery-wrapper .gallery-item .gallery-mask {
+  height: 37%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+}
+
+.gallery-section .gallery-wrapper .gallery-item .gallery-title {
+  font-size: 0.27rem;
+  font-weight: bold;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  left: 0.3rem;
+  bottom: 0.3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-section .gallery-wrapper .gallery-item .gallery-tip {
+  font-size: 0.18rem;
+  font-weight: normal;
+  line-height: 1.4;
+  color: rgba(215, 219, 224, 1);
+  position: absolute;
+  left: 0.3rem;
+  bottom: 0.3rem;
+  word-break: keep-all;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-section .gallery-wrapper .gallery-item .gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-section .gallery-wrapper .gallery-item.active {
+  width: 14rem;
+  margin: 0 1rem;
+}
+
+.gallery-section .gallery-wrapper .gallery-item.active .gallery-title {
+  bottom: 0.6rem;
+}
+
+.gallery-section .gallery-wrapper .gallery-item.active .gallery-tip {
+  opacity: 1;
+}
+
+.gallery-section .gallery-wrapper .gallery-item.active .gallery-img {
+  height: 100%;
+  width: 100%;
+}

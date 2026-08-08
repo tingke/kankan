@@ -1,0 +1,1059 @@
+<!doctype html>
+<!-- saved from url=(0059)http://www.hhstar.cn/index.php/cms/archives/index/id/1.html -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>
+      花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台
+    </title>
+    <meta
+      name="keywords"
+      content="花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台"
+    />
+    <meta
+      name="description"
+      content="花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台"
+    />
+    <link rel="icon" href="static/huofa/logo.png" />
+    <link rel="stylesheet" href="static/huofa/common.css" />
+    <link rel="stylesheet" href="static/huofa/swiper.min.css" />
+    <link rel="stylesheet" href="static/huofa/animate.min.css" />
+    <link rel="stylesheet" href="static/huofa/style.css" type="text/css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <script src="static/huofa/jquery-1.11.0.min.js"></script>
+    <script
+      src="static/huofa/jquery.vidbacking.js"
+      type="text/javascript"
+    ></script>
+    <script src="static/huofa/bezier.js" type="text/javascript"></script>
+
+    <style>
+      @keyframes heart {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.02);
+        }
+      }
+    </style>
+    <style>
+      .video-section,
+      .project-section,
+      .company-section,
+      .contact-section {
+        height: 100vh;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .product-section .product-sticky {
+        width: 100vw;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+      }
+
+      .product-section .product-sticky img {
+        width: 100%;
+      }
+
+      .product-section .enter {
+        cursor: pointer;
+        animation: heart 0.5s linear infinite alternate;
+      }
+
+      .product-section .youxi-container,
+      .product-section .moqiang-container,
+      .product-section .daolan-container {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .product-section .youxi-container {
+        width: 31.61%;
+        left: 25.2vw;
+        top: 19.4vw;
+      }
+
+      .product-section .moqiang-container {
+        width: 24.9%;
+        left: 47.7vw;
+        top: 32.4vw;
+      }
+
+      .product-section .daolan-container {
+        width: 18%;
+        left: 23.9vw;
+        top: 35.9vw;
+      }
+
+      .product-section .youxi-container img,
+      .product-section .moqiang-container img,
+      .product-section .daolan-container img {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        opacity: 0;
+      }
+
+      .product-section .youxi-container img:first-child,
+      .product-section .moqiang-container img:first-child,
+      .product-section .daolan-container img:first-child {
+        opacity: 1;
+      }
+
+      .swiper-container-projectnew.swiper-container {
+        width: 100%;
+        height: 100%;
+        background-color: #111111;
+        transform: scale(1.2);
+      }
+
+      .swiper-container-projectnew .swiper-slide {
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        transition: 500ms;
+        transform: scale(0.8);
+        cursor: pointer;
+        z-index: -1;
+      }
+
+      .swiper-container-projectnew .swiper-slide a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .swiper-container-projectnew .swiper-slide a:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgb(17 17 17 / 60%);
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        z-index: 2;
+      }
+
+      .swiper-container-projectnew .swiper-slide img {
+        width: 100%;
+        border-radius: 1px;
+      }
+
+      .swiper-container-projectnew .swiper-slide-active,
+      .swiper-container-projectnew .swiper-slide-duplicate-active {
+        transform: scale(1);
+      }
+      .swiper-container-projectnew .swiper-slide-active a:before,
+      .swiper-container-projectnew .swiper-slide-duplicate-active a:before {
+        background: rgb(17 17 17 / 20%);
+      }
+
+      .swiper-pagination-project {
+        position: absolute;
+        bottom: 1.6rem !important;
+        left: 50% !important;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        width: initial !important;
+      }
+      .swiper-pagination-project span {
+        cursor: pointer;
+        display: inline-block;
+        border-radius: 0px;
+        background: none !important;
+        padding: 0 0.1rem !important;
+        z-index: 10;
+        opacity: 1 !important;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .swiper-pagination-project span em {
+        width: 1px;
+        display: block;
+        height: 0.2rem;
+        position: absolute;
+        top: 50%;
+        margin-top: -0.05rem;
+        left: 50%;
+        background: #ffffff;
+      }
+
+      .swiper-pagination-project span.swiper-pagination-bullet-active em {
+        top: 50%;
+        background-color: #ffd900 !important;
+        height: 0.4rem;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        margin-top: -0.15rem;
+      }
+
+      .swiper-container-projectnew .swiper-slide-0 .ptxt {
+        display: block;
+      }
+      .ptxt {
+        position: absolute;
+        font-size: 0.57rem;
+        color: #ffffff;
+        text-align: center;
+        height: 0.57rem;
+        font-weight: bold;
+        margin-top: -0.22rem;
+        width: 100%;
+        display: none;
+        z-index: 33;
+        font-family:
+          "SourceHanSansCNBold",
+          "Microsoft YaHei",
+          Helvetica Neue,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+      .swiper-pagination-project .swiper-slide {
+        position: relative;
+      }
+      .swiper-container-project .swiper-slide-active .ptxt,
+      .swiper-container-project .swiper-slide-duplicate-active .ptxt {
+        display: block;
+      }
+
+      .section_tit_h3 {
+        position: relative;
+        color: #fff;
+        font-size: 0.28rem;
+        text-transform: uppercase;
+        letter-spacing: 0.21rem;
+        font-family:
+          "AdobeHeitiStd",
+          "Microsoft YaHei",
+          Helvetica Neue,
+          Helvetica,
+          Arial,
+          sans-serif;
+        font-weight: normal;
+        z-index: 999;
+        top: 15vh;
+        text-align: center;
+      }
+
+      .contact_wrap {
+        margin-top: 11.5%;
+        position: relative;
+        height: 3.57rem;
+      }
+      .contact_item dt {
+        font-size: 0.24rem;
+        color: #ffffff;
+        font-weight: normal;
+        font-family:
+          "SourceHanSansCN-Medium",
+          "Microsoft YaHei",
+          Helvetica Neue,
+          Helvetica,
+          Arial,
+          sans-serif;
+        margin-bottom: 7px;
+      }
+      .contact_item dd {
+        font-size: 0.15rem;
+        color: #dfdfdf;
+        line-height: 2;
+        font-family:
+          "SourceHanSansCNNormal",
+          "Microsoft YaHei",
+          Helvetica Neue,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+      .contact_item:nth-of-type(1) {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+      .contact_item:nth-of-type(2) {
+        position: absolute;
+        top: 45%;
+        left: 0px;
+      }
+      .contact_item:nth-of-type(3) {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+      }
+
+      .contact_map {
+        width: auto;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        border: solid 1px #282a2c;
+      }
+      .contact_wx {
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        left: 50%;
+        margin-left: -60px;
+        bottom: 13%;
+      }
+      .social {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        bottom: 6.5%;
+      }
+      .social a,
+      .social img {
+        display: inline-block;
+      }
+      .social a {
+        margin-left: 0.53rem;
+      }
+      .social img {
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+      }
+      .social a:nth-of-type(1) {
+        margin-left: 0px;
+      }
+
+      .nav_company {
+        right: 0px;
+      }
+      .nav_company a {
+        display: block;
+        font-size: 0.18rem;
+        color: #a7a7a7;
+        line-height: 2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        padding-left: 25px;
+        font-family:
+          "SourceHanSansCNNormal",
+          "Microsoft YaHei",
+          Helvetica Neue,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+      .nav_company a:before {
+        content: "";
+        display: block;
+        background: #ffd900;
+        width: 10px;
+        height: 1px;
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        margin-top: -0.5px;
+      }
+      .copany_wrap {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      .copany_info {
+        width: 100%;
+      }
+      .copany_info h3 {
+        font-weight: bold;
+        color: #ffffff;
+        font-size: 0.34rem;
+        margin-bottom: 0px !important;
+        font-family:
+          "SourceHanSansCNBold",
+          "Microsoft YaHei",
+          Helvetica Neue,
+          Helvetica,
+          Arial,
+          sans-serif;
+      }
+      .copany_info p {
+        font-size: 0.18rem;
+        color: #a7a7a7;
+        line-height: 2;
+        letter-spacing: 2px;
+        font-family:
+          "SourceHanSansCNNormal",
+          "Microsoft YaHei",
+          Helvetica Neue,
+          Helvetica,
+          Arial,
+          sans-serif;
+        position: absolute;
+        bottom: 0px;
+        max-width: 53.6%;
+      }
+      .copany_info,
+      .nav_company {
+        height: 2.54rem;
+        top: 50%;
+        margin-top: -1.27rem;
+        position: absolute;
+      }
+
+      @media screen and (max-width: 1080px) {
+        .section_tit_h3 {
+          font-size: 0.24rem;
+          letter-spacing: 0px;
+          top: 25vh;
+        }
+
+        .ptxt {
+          font-size: 0.22rem;
+          font-weight: bold;
+          display: block;
+          z-index: 44;
+          line-height: 43px;
+          height: 43px;
+          margin-top: -22px;
+        }
+
+        .swiper-container-projectnew .swiper-slide {
+          height: auto !important;
+        }
+
+        .swiper-container-projectnew .swiper-slide a {
+          display: block;
+        }
+
+        .swiper-pagination-project {
+          bottom: 20vh !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobi_navBar">
+      <div id="hamburger" class="protip">
+        <span></span>
+      </div>
+    </div>
+    <div class="header" id="header_inside">
+      <div class="logo">
+        <a href="index.html"><img src="static/huofa/logo.png" /></a>
+      </div>
+      <ul class="menu">
+        <li class="menuli" id="productnav">
+          <a href="index.html#product">产品</a>
+        </li>
+        <li class="menuli" id="projectnav">
+          <a href="index.html#project">项目</a>
+        </li>
+        <li class="menuli" id="companynav">
+          <a href="index.html#company">简介</a>
+        </li>
+        <li class="menuli" id="newsnav"><a href="news.html">动态</a></li>
+        <li class="menuli" id="contactnav">
+          <a href="index.html#contact">联系</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="video-section">
+      <video
+        autoplay="false"
+        loop=""
+        class="vidbacking-active-body-back"
+        muted="true"
+        playsinline="true"
+        webkit-playsinline="true"
+        airplay="allow"
+        preload="metadata"
+        x-webkit-airplay="true"
+        x5-video-player-type="h5"
+        x5-video-player-fullscreen="true"
+        x5-video-orientation="portraint"
+        style="
+          object-fit: cover;
+          display: inline;
+          background-image: url(&quot;static/huofa/home/bg.png&quot;);
+          background-size: cover;
+          background-position: center;
+          opacity: 1;
+          height: 100%;
+        "
+        id="iosvedio"
+      ></video>
+    </div>
+
+    <div class="product-section" id="product" style="height: 600vh">
+      <div class="product-sticky">
+        <img src="static/huofa/home/bg.png" />
+        <div class="youxi-container">
+          <img
+            src="static/huofa/home/youxi/游戏黑板.png"
+            data-scroll
+            data-scroll-start="range 0.1428 opacity 1"
+            data-scroll-end="range 0.2142 opacity 0"
+          />
+          <img
+            src="static/huofa/home/youxi/1.png"
+            data-scroll
+            data-scroll-start="range 0.2142 opacity 0"
+            data-scroll-end="range 0.25 opacity 1"
+          />
+          <img
+            src="static/huofa/home/youxi/3.png"
+            data-scroll="0,0,0.5,4"
+            data-scroll-start="range 0.2142 opacity 0 scale 0.8"
+            data-scroll-end="range 0.25 opacity 1 scale 1"
+          />
+          <img
+            src="static/huofa/home/youxi/2.png"
+            data-scroll="0,0,0.5,4"
+            data-scroll-start="range 0.25 opacity 0 scale 0.8"
+            data-scroll-end="range 0.2857 opacity 1 scale 1"
+            class="enter"
+            onclick="youxi()"
+          />
+        </div>
+        <div class="moqiang-container">
+          <img
+            src="static/huofa/home/moqiang/魔墙黑板.png"
+            data-scroll
+            data-scroll-start="range 0.4285 opacity 1"
+            data-scroll-end="range 0.5 opacity 0"
+          />
+          <img
+            src="static/huofa/home/moqiang/1.png"
+            data-scroll
+            data-scroll-start="range 0.5 opacity 0"
+            data-scroll-end="range 0.5357 opacity 1"
+          />
+          <img
+            src="static/huofa/home/moqiang/4.png"
+            data-scroll
+            data-scroll-start="range 0.5 opacity 0 x 1 y 0 z 0"
+            data-scroll-end="range 0.5357 opacity 1 x 0 y 0 z 0"
+          />
+          <img
+            src="static/huofa/home/moqiang/5.png"
+            data-scroll
+            data-scroll-start="range 0.5 opacity 0 x -1 y 0 z 0"
+            data-scroll-end="range 0.5357 opacity 1 x 0 y 0 z 0"
+          />
+          <img
+            src="static/huofa/home/moqiang/6.png"
+            data-scroll
+            data-scroll-start="range 0.5 opacity 0 x 1 y 0 z 0"
+            data-scroll-end="range 0.5357 opacity 1 x 0 y 0 z 0"
+          />
+          <img
+            src="static/huofa/home/moqiang/3.png"
+            data-scroll="0,0,0.5,4"
+            data-scroll-start="range 0.5357 opacity 0 scale 0.8"
+            data-scroll-end="range 0.5714 opacity 1 scale 1"
+          />
+          <img
+            src="static/huofa/home/moqiang/2.png"
+            data-scroll="0,0,0.5,4"
+            data-scroll-start="range 0.5357 opacity 0 scale 0.8"
+            data-scroll-end="range 0.5714 opacity 1 scale 1"
+            class="enter"
+            onclick="moqiang()"
+          />
+        </div>
+        <div class="daolan-container">
+          <img
+            src="static/huofa/home/daolan/黑板.png"
+            data-scroll
+            data-scroll-start="range 0.7142 opacity 1"
+            data-scroll-end="range 0.7857 opacity 0"
+          />
+          <img
+            src="static/huofa/home/daolan/3.png"
+            data-scroll
+            data-scroll-start="range 0.7857 opacity 0 scale 0.8"
+            data-scroll-end="range 0.8214 opacity 1 scale 1"
+          />
+          <img
+            src="static/huofa/home/daolan/1.png"
+            data-scroll
+            data-scroll-start="range 0.7857 opacity 0"
+            data-scroll-end="range 0.8214 opacity 1"
+          />
+          <img
+            src="static/huofa/home/daolan/4.png"
+            data-scroll="0,0,0.5,2"
+            data-scroll-start="range 0.8214 opacity 0 scale 0.8"
+            data-scroll-end="range 0.8571 opacity 1 scale 1"
+          />
+          <img
+            src="static/huofa/home/daolan/2.png"
+            data-scroll="0,0,0.5,4"
+            data-scroll-start="range 0.8214 opacity 0 scale 0.8"
+            data-scroll-end="range 0.8571 opacity 1 scale 1"
+            class="enter"
+            onclick="daolan()"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="project-section" id="project">
+      <h3 class="section_tit_h3" data-scroll-reveal>HUAHUO PROJECT</h3>
+      <div class="swiper-container swiper-container-projectnew">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide swiper-slide-0">
+            <a href="#" target="_blank">
+              <img
+                src="uploads/20250716/1383e50fb398e5b79ccd6278a60dc078.png"
+                class="aniimg"
+              />
+              <p class="ptxt">文博文旅</p>
+            </a>
+          </div>
+          <div class="swiper-slide swiper-slide-1">
+            <a href="#" target="_blank">
+              <img
+                src="uploads/20250716/94282db3bab006025107c70f3dad03a4.png"
+                class="aniimg"
+              />
+              <p class="ptxt">科技体验</p>
+            </a>
+          </div>
+          <div class="swiper-slide swiper-slide-2">
+            <a href="#" target="_blank">
+              <img
+                src="uploads/20250716/b8e7d36a9f521cc71574a98a383754fb.png"
+                class="aniimg"
+              />
+              <p class="ptxt">企业品牌</p>
+            </a>
+          </div>
+          <div class="swiper-slide swiper-slide-3">
+            <a href="#" target="_blank">
+              <img
+                src="uploads/20250716/43e43de5d597d3b8c802846e6e508d93.png"
+                class="aniimg"
+              />
+              <p class="ptxt">艺术文化</p>
+            </a>
+          </div>
+          <div class="swiper-slide swiper-slide-4">
+            <a href="#" target="_blank">
+              <img
+                src="uploads/20250716/906eff407bb45799d733e63d84c33aa6.png"
+                class="aniimg"
+              />
+              <p class="ptxt">数字金融</p>
+            </a>
+          </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-project"></div>
+      </div>
+    </div>
+
+    <div class="company-section" id="company">
+      <h3
+        class="section_tit_h3"
+        data-scroll-reveal="enter from bottom after 0.4s"
+      >
+        COMPANY PROFILE
+      </h3>
+      <div class="wrapper copany_wrap">
+        <div class="copany_info">
+          <h3 data-scroll-reveal="enter from left after 0.6s">
+            探索文化、艺术和科技的无限可能性
+          </h3>
+          <p data-scroll-reveal="enter from left after 0.8s">
+            北京花火时代科技有限公司专注于数字新媒体创意及智能化场景研发，致力于探索新媒体技术与多元领域的深度融合，为各行业客户打造全新数字化与智能化体验。产品广泛应用于文博、展览、文旅等领域，解决方案助力客户提升品牌价值，构建数字新媒体智能化桥梁。
+          </p>
+        </div>
+        <div class="nav_company" data-scroll-reveal="enter from right after 1s">
+          <a href="javascript:void(0);">国家高新技术企业</a>
+          <a href="javascript:void(0);">中关村高新技术企业</a>
+          <a href="javascript:void(0);">ISO9001质量管理体系认证</a>
+          <a href="javascript:void(0);">北京软件协会理事单位</a>
+          <a href="javascript:void(0);">北京市创新型中小企业</a>
+          <a href="javascript:void(0);">北京市双软企业</a>
+          <a href="javascript:void(0);">软件著作权50+</a>
+          <a href="javascript:void(0);">国际/国家奖项15+</a>
+          <a href="javascript:void(0);"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section" id="contact">
+      <h3
+        class="section_tit_h3"
+        data-scroll-reveal="enter from bottom after 0.4s"
+      >
+        CONTACT US
+      </h3>
+      <div class="wrapper contact_wrap">
+        <dl
+          class="contact_item"
+          data-scroll-reveal="enter from left after 0.6s"
+        >
+          <dt>商务合作</dt>
+          <dd>陈经理：134-6658-1261</dd>
+          <dd>宋经理：137-2001-6289</dd>
+        </dl>
+        <dl
+          class="contact_item"
+          data-scroll-reveal="enter from left after 0.8s"
+        >
+          <dt>企业邮箱</dt>
+          <dd>info@huahuotech.com</dd>
+        </dl>
+        <dl class="contact_item" data-scroll-reveal="enter from left after 1s">
+          <dt>联系地址</dt>
+          <dd>北京市海淀区学清路学院8号B681</dd>
+        </dl>
+        <a href="https://j.map.baidu.com/c0/cRtd" target="_blank">
+          <img
+            src="uploads/20250228/72427d946594463c1ed1cb342040de96.jpg"
+            class="contact_map"
+            data-scroll-reveal="enter from right after 1.2s"
+          />
+        </a>
+      </div>
+      <img
+        src="uploads/20250228/69b73b8bcbdb9880039ac70cb02d312f.png"
+        class="contact_wx"
+        data-scroll-reveal="enter from bottom after 1.4s"
+      />
+      <div class="social" data-scroll-reveal="enter from bottom after 1.6s">
+        <a href="https://b23.tv/xMQqteu" target="_blank">
+          <img
+            src="uploads/20250228/d7a47329934ef3236be88324fdc1475f.png"
+            class="socialimg"
+           
+            dataimg="uploads/20250228/d7a47329934ef3236be88324fdc1475f.png"
+          />
+        </a>
+        <a href="https://v.douyin.com/i5Rn76q8/" target="_blank">
+          <img
+            src="uploads/20250228/16c0f65a0b77c208d126e687c35d38f8.png"
+            class="socialimg"
+           
+            dataimg="uploads/20250228/16c0f65a0b77c208d126e687c35d38f8.png"
+          />
+        </a>
+        <a
+          href="https://www.xiaohongshu.com/user/profile/5e465f29000000000100991b"
+          target="_blank"
+        >
+          <img
+            src="uploads/20250228/b9ca607f17b6a432e0e2282be79796c9.png"
+            class="socialimg"
+           
+            dataimg="uploads/20250228/b9ca607f17b6a432e0e2282be79796c9.png"
+          />
+        </a>
+        <a href="https://weibo.com/u/7670159258" target="_blank">
+          <img
+            src="uploads/20250228/458c50b953aa9cd316bdce404b6c4f37.png"
+            class="socialimg"
+           
+            dataimg="uploads/20250228/458c50b953aa9cd316bdce404b6c4f37.png"
+          />
+        </a>
+        <a href="https://www.manamana.net" target="_blank">
+          <img
+            src="uploads/20250228/66062e190cc6f317f7f441dc5582d384.png"
+            class="socialimg"
+           
+            dataimg="uploads/20250228/66062e190cc6f317f7f441dc5582d384.png"
+          />
+        </a>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="footer">
+      北京花火时代科技有限公司 |
+      <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17033495号</a>
+    </div>
+
+    <script type="text/javascript" src="static/huofa/scrollReveal.js"></script>
+    <script src="static/huofa/swiper.min.js"></script>
+    <script src="static/huofa/swiper.animate.min.js"></script>
+    <script src="static/huofa/common.js"></script>
+    <script src="static/huofa/global.js"></script>
+    <script type="text/javascript" src="static/huofa/jweixin-1.2.0.js"></script>
+
+    <script>
+      function youxi() {
+        window.open("/youxi.html", "_blank");
+      }
+      function moqiang() {
+        window.open("/moqiang.html", "_blank");
+      }
+      function daolan() {
+        window.open("/daolan.html", "_blank");
+      }
+      $(function () {
+        function setVideoTransform() {
+          const currentScroll = $(document).scrollTop();
+          const windowHeight = $(window).height();
+          if (currentScroll <= windowHeight / 3) {
+            $(".video-section").css({
+              transform: "translate3d(0px, " + currentScroll / 2.5 + "px, 0px)",
+            });
+          } else if (currentScroll < windowHeight) {
+            $(".video-section").css({
+              transform: "translate3d(0px, " + currentScroll / 2.5 + "px, 0px)",
+            });
+          }
+        }
+
+        function scale(el, percent, index) {
+          const points = [
+            { x: 0, y: 0, s: 1 },
+            { x: 8, y: 8, s: 2 },
+            { x: 8, y: 8, s: 2 },
+            { x: -7, y: -5, s: 1.5 },
+            { x: -7, y: -5, s: 1.5 },
+            { x: 17, y: -8, s: 1.8 },
+            { x: 17, y: -8, s: 1.8 },
+            { x: 17, y: -8, s: 1.8 },
+          ];
+          $(".product-sticky").css({
+            transform:
+              "scale(" +
+              (points[index - 1].s +
+                (points[index].s - points[index - 1].s) * percent) +
+              ") translate3d(" +
+              (points[index - 1].x +
+                (points[index].x - points[index - 1].x) * percent) +
+              "vw, " +
+              (points[index - 1].y +
+                (points[index].y - points[index - 1].y) * percent) +
+              "vw, 0)",
+          });
+        }
+
+        function handleProduct() {
+          const currentScroll = $(document).scrollTop();
+          const windowHeight = $(window).height();
+          const el = $(".product-section");
+          const height = el.height();
+          const offsetTop = el.offset().top;
+
+          const q = [
+            {
+              container: ".product-section",
+              start: 0,
+              end: 1 / 7,
+              handler: scale,
+              index: 1,
+            },
+            {
+              container: ".product-section",
+              start: 1 / 7,
+              end: 2 / 7,
+              handler: scale,
+              index: 2,
+            },
+            {
+              container: ".product-section",
+              start: 2 / 7,
+              end: 3 / 7,
+              handler: scale,
+              index: 3,
+            },
+            {
+              container: ".product-section",
+              start: 3 / 7,
+              end: 4 / 7,
+              handler: scale,
+              index: 4,
+            },
+            {
+              container: ".product-section",
+              start: 4 / 7,
+              end: 5 / 7,
+              handler: scale,
+              index: 5,
+            },
+            {
+              container: ".product-section",
+              start: 5 / 7,
+              end: 6 / 7,
+              handler: scale,
+              index: 6,
+            },
+            {
+              container: ".product-section",
+              start: 6 / 7,
+              end: 7 / 7,
+              handler: scale,
+              index: 7,
+            },
+          ];
+
+          if (currentScroll < offsetTop) {
+            scale(el, 0, 1);
+            scrollShow(el, 0);
+          }
+
+          if (
+            currentScroll >= offsetTop &&
+            currentScroll <= offsetTop + height
+          ) {
+            // 从入屏到出屏的进度百分比
+            const percent = (currentScroll - offsetTop) / height;
+            scrollShow(el, percent);
+
+            const filterQ = q.filter(function (i) {
+              return percent >= i.start && percent < i.end;
+            });
+
+            filterQ.forEach(function (i) {
+              const p = (percent - i.start) / (i.end - i.start);
+              i.handler($(i.container), p, i.index);
+            });
+          }
+        }
+
+        function handleNav() {
+          const currentScroll = $(document).scrollTop();
+          $("#product, #project, #company, #contact").each(function () {
+            const that = $(this);
+            if (currentScroll >= that.offset().top) {
+              $("#" + that.attr("id") + "nav")
+                .addClass("hover")
+                .siblings()
+                .removeClass("hover");
+            }
+          });
+          if (currentScroll < $("#product").offset().top) {
+            $(".menuli").removeClass("hover");
+          }
+        }
+
+        let scrolled = false;
+        function scrollPage() {
+          setVideoTransform();
+          handleProduct();
+          handleNav();
+          scrolled = false;
+        }
+        function scrollHandler() {
+          if (!scrolled) {
+            scrolled = true;
+            window.requestAnimationFrame(function () {
+              scrollPage();
+            });
+          }
+        }
+
+        scrollHandler();
+
+        $(window).resize(function () {
+          scrollHandler();
+        });
+
+        $(window).scroll(scrollHandler);
+      });
+    </script>
+    <script>
+      $(".menuli").click(function () {
+        $(this).addClass("hover").siblings().removeClass("hover");
+      });
+
+      var hash;
+      hash = !window.location.hash ? "" : window.location.hash;
+      if (hash.length > 0) {
+        $(hash + "nav")
+          .addClass("hover")
+          .siblings()
+          .removeClass("hover");
+      }
+
+      var swipera = new Swiper(".swiper-container-projectnew", {
+        slidesPerView: `` ? 1 : 2,
+        spaceBetween: `` ? 0 : 30,
+        centeredSlides: true,
+        nested: true,
+        loop: true,
+        speed: 1000,
+        pagination: {
+          el: ".swiper-container-projectnew .swiper-pagination-project",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span  class="' + className + '"><em></em></span>';
+          },
+        },
+        on: {
+          slideChangeTransitionEnd: function () {
+            var indexa = this.realIndex;
+            $(".swiper-container-projectnew .swiper-slide").find("p").hide();
+            $(".swiper-container-projectnew .swiper-slide-" + indexa)
+              .find("p")
+              .fadeIn();
+          },
+        },
+      });
+
+      $(".socialimg").hover(
+        function () {
+          var hoverimg = $(this).attr("datahover");
+          $(this).attr("src", hoverimg);
+        },
+        function () {
+          var hoverimg2 = $(this).attr("dataimg");
+          $(this).attr("src", hoverimg2);
+        },
+      );
+
+      var u = navigator.userAgent,
+        app = navigator.appVersion;
+      var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
+      var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+      function is_weixn() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      if (is_weixn()) {
+        document.addEventListener(
+          "WeixinJSBridgeReady",
+          function () {
+            document.getElementById("iosvedio").play();
+          },
+          false,
+        );
+      }
+    </script>
+  </body>
+</html>

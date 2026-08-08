@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台</title>
+<meta name="keywords" content="花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台" />
+<meta name="description" content="花火科技丨数字博物馆丨展览小游戏丨数字魔墙丨智能导览丨虚拟策展平台" />
+<link rel="icon" href="static/huofa/logo.png" />
+<link rel="stylesheet" href="static/huofa/common.css" />
+<link rel="stylesheet" href="static/huofa/swiper.min.css" />
+<link rel="stylesheet" href="static/huofa/animate.min.css" />
+<link rel="stylesheet" href="static/huofa/style.css" type="text/css" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="format-detection" content="telephone=no" />
+<script src="static/huofa/jquery-1.11.0.min.js"></script>
+<script src="static/huofa/jquery.vidbacking.js" type="text/javascript"></script>
+<script src="static/huofa/bezier.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="static/huofa/subject_pc.css" />
+
+    <style>
+      .preview-section .content .moqiang-center {
+        width: 64.2%;
+        height: auto;
+        left: 0;
+        top: 0;
+        position: absolute;
+        transform: translate3d(1.1rem, 1.1rem, 0);
+      }
+
+      .preview-section .content .moqiang-bg {
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 0;
+        position: relative;
+      }
+
+      .preview-section .content .moqiang-left {
+        width: 8.5%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+      }
+
+      .preview-section .content .moqiang-right {
+        width: 26.2%;
+        height: auto;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+      }
+    </style>
+    <style>
+      .detail-section .detail-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .detail-section .detail-item .header {
+        align-items: flex-start;
+        justify-content: center;
+        width: 40%;
+      }
+
+      .detail-section .detail-item .header .title {
+        font-size: 0.32rem;
+      }
+
+      .detail-section .detail-item .content {
+        position: relative;
+        width: 100%;
+      }
+
+      .detail-section .detail-item .content img {
+        width: 100%;
+      }
+
+      .detail-section .detail-item .content img:first-child {
+        position: relative;
+      }
+
+      .detail-section .detail-item .content img:last-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+    <style>
+      .platform-section .content img:first-child {
+        position: relative;
+      }
+
+      .platform-section .content img:last-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobi_navBar">
+  <div id="hamburger" class="protip">
+    <span></span>
+  </div>
+</div>
+<div class="header" id="header_inside">
+  <div class="logo">
+    <a href="index.html"><img src="static/huofa/logo.png" /></a>
+  </div>
+  <ul class="menu">
+    <li class="menuli" id="productnav"><a href="index.html#product">产品</a></li>
+    <li class="menuli" id="projectnav"><a href="index.html#project">项目</a></li>
+    <li class="menuli" id="companynav"><a href="index.html#company">简介</a></li>
+    <li class="menuli" id="newsnav"><a href="news.html">动态</a></li>
+    <li class="menuli" id="contactnav"><a href="index.html#contact">联系</a></li>
+  </ul>
+</div>
+
+    <div class="container">
+      <div class="top-header">
+        <p
+          class="title"
+          data-scroll
+          data-scroll-start="range 0 opacity 1"
+          data-scroll-end="range 1 opacity 0"
+        >
+          一款任您自由定义的魔墙
+        </p>
+        <p
+          class="tip"
+          data-scroll
+          data-scroll-start="range 0 opacity 1"
+          data-scroll-end="range 0 opacity 0"
+        >
+          新一代智慧魔墙，博物馆的智慧窗口
+        </p>
+      </div>
+      <div class="stage-wrapper preview-section" style="height: 400vh">
+        <div class="stage-wrapper-sticky">
+          <div class="content">
+            <img
+              class="moqiang-bg"
+              src="static/huofa/moqiang/preview/背景框.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.4 opacity 1 x 0 y 10 z 0"
+              data-scroll-end="range 0.6 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              class="moqiang-center"
+              src="static/huofa/moqiang/preview/1.webp"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.05 opacity 1 width 100 x 0 y 0 z 0"
+              data-scroll-end="range 0.6 opacity 1 width 64.2 x 1.28 y 1.3 z 0"
+            />
+            <img
+              class="moqiang-left"
+              src="static/huofa/moqiang/preview/侧边栏.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.4 opacity 1 x -5 y 0 z 0"
+              data-scroll-end="range 0.6 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              class="moqiang-right"
+              src="static/huofa/moqiang/preview/编辑栏.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.4 opacity 1 x 7 y 0 z 0"
+              data-scroll-end="range 0.6 opacity 1 x 0 y 0 z 0"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper intro-section" style="height: 300vh">
+        <div class="stage-wrapper-sticky">
+          <div
+            class="header"
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.4 opacity 1 x 0 y 0 z 0"
+          >
+            <p class="title">博物馆的智慧窗口<br />一站式数字展示与管理平台</p>
+          </div>
+          <div class="content">
+            <img
+              src="static/huofa/moqiang/intro.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+              data-scroll-end="range 0.7 opacity 1 x 0 y 0 z 0"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper detail-section" style="height: 900vh">
+        <div class="stage-wrapper-sticky" id="detail-container"></div>
+      </div>
+      <div class="stage-wrapper platform-section" style="height: 300vh">
+        <div class="stage-wrapper-sticky">
+          <div
+            class="header"
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.4 opacity 1 x 0 y 0 z 0"
+          >
+            <p class="title">集成服务灵活配置</p>
+            <p class="tip">
+              集成游戏平台、手机导览服务，扩充魔墙功能。自由加载更多应用，丰富观众体验。
+            </p>
+          </div>
+          <div class="content">
+            <img
+              src="static/huofa/moqiang/platform/1.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+              data-scroll-end="range 0.6 opacity 1 x 0 y 0 z 0"
+            />
+            <img
+              src="static/huofa/moqiang/platform/2.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.4 opacity 0 x 0 y 2 z 0"
+              data-scroll-end="range 0.7 opacity 1 x 0 y 0 z 0"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper parameter-section" style="height: 200vh">
+        <div class="stage-wrapper-sticky">
+          <div
+            class="header"
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.4 opacity 1 x 0 y 0 z 0"
+          >
+            <p class="title">硬件/软件/服务三位一体的优质整合</p>
+          </div>
+          <div class="content">
+            <img
+              src="static/huofa/moqiang/parameter.png"
+              alt=""
+              data-scroll
+              data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+              data-scroll-end="range 0.7 opacity 1 x 0 y 0 z 0"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrapper gallery-section" style="height: 200vh">
+        <div class="stage-wrapper-sticky">
+          <div
+            class="header"
+            data-scroll
+            data-scroll-start="range 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 x 0 y 0 z 0"
+          >
+            <p class="title">应用场景</p>
+          </div>
+          <div class="content">
+            <div class="gallery-wrapper">
+              <div
+                class="gallery-item"
+                data-index="0"
+                data-scroll
+                data-scroll-start="range 0.1 x 0 y 3 z 0"
+                data-scroll-end="range 0.6 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/moqiang/gallery/mask.png" alt="" />
+                <div class="gallery-title">博物馆</div>
+                <div class="gallery-tip">公共空间、常设展、专题展、巡展等数字资产展示场景</div>
+                <img class="gallery-img" src="static/huofa/moqiang/gallery/1.png" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="1"
+                data-scroll
+                data-scroll-start="range 0.2 x 0 y 3 z 0"
+                data-scroll-end="range 0.7 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/moqiang/gallery/mask.png" alt="" />
+                <div class="gallery-title">艺术馆</div>
+                <div class="gallery-tip">公共空间、常设展、临展等艺术作品展示</div>
+                <img class="gallery-img" src="static/huofa/moqiang/gallery/2.png" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="2"
+                data-scroll
+                data-scroll-start="range 0.3 x 0 y 3 z 0"
+                data-scroll-end="range 0.8 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/moqiang/gallery/mask.png" alt="" />
+                <div class="gallery-title">图书馆</div>
+                <div class="gallery-tip">公共空间、展览、教育等典籍文献数字化展示</div>
+                <img class="gallery-img" src="static/huofa/moqiang/gallery/3.png" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="3"
+                data-scroll
+                data-scroll-start="range 0.4 x 0 y 3 z 0"
+                data-scroll-end="range 0.9 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/moqiang/gallery/mask.png" alt="" />
+                <div class="gallery-title">文旅景区</div>
+                <div class="gallery-tip">室内外景区、文旅服务中心等数字影像展示</div>
+                <img class="gallery-img" src="static/huofa/moqiang/gallery/4.png" alt="" />
+              </div>
+              <div
+                class="gallery-item"
+                data-index="4"
+                data-scroll
+                data-scroll-start="range 0.5 x 0 y 3 z 0"
+                data-scroll-end="range 1 x 0 y 0 z 0"
+                data-scroll-final="x 0 y 0 z 0"
+              >
+                <img class="gallery-mask" src="static/huofa/moqiang/gallery/mask.png" alt="" />
+                <div class="gallery-title">其他空间</div>
+                <div class="gallery-tip">机场、地铁、车站、商场等综合信息数字化展示</div>
+                <img class="gallery-img" src="static/huofa/moqiang/gallery/5.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+  北京花火时代科技有限公司 |
+  <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17033495号</a>
+</div>
+
+<script type="text/javascript" src="static/huofa/scrollReveal.js"></script>
+<script src="static/huofa/swiper.min.js"></script>
+<script src="static/huofa/swiper.animate.min.js"></script>
+<script src="static/huofa/common.js"></script>
+<script src="static/huofa/global.js"></script>
+<script type="text/javascript" src="static/huofa/jweixin-1.2.0.js"></script>
+
+    <script type="text/template" id="detail1">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">提供开放的管理平台</p>
+          <p class="tip">支持自由编辑创建展示方案，<br />远程一键发布，实时更新。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/moqiang/detail/1.webp" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+          <img src="static/huofa/moqiang/detail/2.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="detail2">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">内置丰富模板库</p>
+          <p class="tip">千屏千面，预设展示模板，<br />支持自定义模板及资源库。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/moqiang/detail/3.png" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+          <img src="static/huofa/moqiang/detail/4.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="detail3">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0.4 opacity 0 x 0 y 0 z 0"
+          data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">支持任意分辨率适配</p>
+          <p class="tip">灵活设置组合，支持横/竖屏拼接，<br />兼容各种显示尺寸。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/moqiang/detail/5.webp" alt=""
+            data-scroll
+            data-scroll-start="range 0.4 opacity 0 x 0 y 0 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+          <img src="static/huofa/moqiang/detail/6.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.5 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 1 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="detail4">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          data-scroll-final="x 0 y -2 z 0"
+        >
+          <p class="title">自由创建数据库</p>
+          <p class="tip">
+            前端提供AI检索，<br />后端集成AI工具，<br />便捷加工创建数字资产。
+          </p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/moqiang/detail/7.png" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+          <img src="static/huofa/moqiang/detail/8.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+            data-scroll-final="x 0 y -2 z 0"
+          />
+        </div>
+      </div>
+    </script>
+    <script type="text/template" id="detail5">
+      <div class="detail-item">
+        <div class="header"
+          data-scroll
+          data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+          data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+        >
+          <p class="title">支持自定义知识图谱</p>
+          <p class="tip">知识图谱展示，支持自定义关联属性、<br />明星文物推荐。</p>
+        </div>
+        <div class="content">
+          <img src="static/huofa/moqiang/detail/9.webp" alt=""
+            data-scroll
+            data-scroll-start="range 0 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.5 opacity 1 x 0 y 0 z 0"
+          />
+          <img src="static/huofa/moqiang/detail/10.png" alt=""
+            data-scroll
+            data-scroll-start="range 0.3 opacity 0 x 0 y 2 z 0"
+            data-scroll-end="range 0.8 opacity 1 x 0 y 0 z 0"
+          />
+        </div>
+      </div>
+    </script>
+    <script>
+      $(function () {
+        function handlePreviewSection() {
+          const currentScroll = $(document).scrollTop();
+          const windowHeight = $(window).height();
+          const el = $('.preview-section');
+          const height = el.height();
+          const offsetTop = el.offset().top;
+
+          if (currentScroll < offsetTop) {
+            scrollShow(el, 0);
+          } else if (currentScroll > offsetTop && currentScroll <= offsetTop + height) {
+            if (currentScroll > offsetTop && currentScroll <= offsetTop + height - windowHeight) {
+              // 从入屏到出屏的进度百分比
+              const percent = (currentScroll - offsetTop) / height;
+              scrollShow(el, percent);
+            }
+
+            if (
+              currentScroll > offsetTop + height - windowHeight &&
+              currentScroll < offsetTop + height
+            ) {
+              const percent = (currentScroll - (offsetTop + height - windowHeight)) / windowHeight;
+              scrollHide(el, percent);
+            }
+          }
+        }
+
+        let preItem = {};
+        function handleDetailSection() {
+          const currentScroll = $(document).scrollTop();
+          const windowHeight = $(window).height();
+          const el = $('.detail-section');
+          const height = el.height();
+          const offsetTop = el.offset().top;
+
+          const q = [
+            { index: 0, start: 0, end: 1 / 10, handler: scrollShow },
+            { index: 0, start: 1 / 10, end: 2 / 10, handler: scrollHide },
+            { index: 1, start: 2 / 10, end: 3 / 10, handler: scrollShow },
+            { index: 1, start: 3 / 10, end: 4 / 10, handler: scrollHide },
+            { index: 2, start: 4 / 10, end: 5 / 10, handler: scrollShow },
+            { index: 2, start: 5 / 10, end: 6 / 10, handler: scrollHide },
+            { index: 3, start: 6 / 10, end: 7 / 10, handler: scrollShow },
+            { index: 3, start: 7 / 10, end: 8 / 10, handler: scrollHide },
+            { index: 4, start: 8 / 10, end: 9 / 10, handler: scrollShow },
+            { index: 4, start: 9 / 10, end: 10 / 10, handler: scrollHide },
+          ];
+
+          if (currentScroll > offsetTop - windowHeight && currentScroll <= offsetTop + height) {
+            // 从入屏到出屏的进度百分比
+            const percent = (currentScroll - (offsetTop - windowHeight)) / (windowHeight + height);
+            let item = {};
+            q.forEach(function (i) {
+              if (percent >= i.start && percent < i.end) {
+                item = i;
+              }
+            });
+            if (preItem.index !== item.index) {
+              const template = $('#detail' + (item.index + 1)).html();
+              $('#detail-container').html($(template));
+              preItem = item;
+            }
+            // 计算当前进度百分比
+            const p = (percent - item.start) / (item.end - item.start);
+            item.handler(el, p);
+          }
+        }
+
+        window.hua.subject();
+
+        let scrolled = false;
+        function scrollPage() {
+          handlePreviewSection();
+          handleDetailSection();
+          handleSection('.top-header');
+          handleSection('.intro-section');
+          handleSection('.platform-section');
+          handleSection('.parameter-section');
+          handleSection('.gallery-section');
+          scrolled = false;
+        }
+        function scrollHandler() {
+          if (!scrolled) {
+            scrolled = true;
+            window.requestAnimationFrame(function () {
+              scrollPage();
+            });
+          }
+        }
+
+        scrollHandler();
+
+        $(window).resize(function () {
+          scrollHandler();
+        });
+
+        $(window).scroll(scrollHandler);
+      });
+    </script>
+  </body>
+</html>
